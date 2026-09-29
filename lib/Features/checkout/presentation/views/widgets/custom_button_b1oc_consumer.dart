@@ -13,6 +13,7 @@ class CustomButtonB1ocConsumer extends StatelessWidget {
     return BlocConsumer<StripePaymentCubit, StripePaymentState>(
       listener: (context, state) {
         if (state is StripePaymentSuccess) {
+          Navigator.pop(context); 
           Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) => const ThankYouView()),
           );
