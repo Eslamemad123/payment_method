@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:payment_method/Features/checkout/data/models/payment_input_model.dart';
 import 'package:payment_method/Features/checkout/data/repo/repo.dart';
@@ -16,6 +18,9 @@ class CheckPaymentImplement extends CheckPaymentrepo {
       );
       return Right(null);
     } on Exception catch (e) {
+       log('PAYMENT ERROR: $e');
+  log('ERROR TYPE: ${e.runtimeType}');
+  log('STACK TRACE: stackTrace');
       return Left(ServerFailer(errorMessage: e.toString()));
     }
   }

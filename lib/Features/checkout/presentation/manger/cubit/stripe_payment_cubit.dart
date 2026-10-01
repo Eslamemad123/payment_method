@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
@@ -18,9 +17,16 @@ class StripePaymentCubit extends Cubit<StripePaymentState> {
     var data = await checkPayment.mackPayment(
       paymentIntentInputModel: paymentIntentInputModel,
     );
+
     data.fold(
-      (left) => emit(StripePaymentFailer(errorMessage: e.toString())),
-      (right) => emit(StripePaymentSuccess()),
+      (left) {
+
+        emit(StripePaymentFailer(errorMessage: left.toString()));
+      },
+      (right) {
+
+        emit(StripePaymentSuccess());
+      },
     );
   }
 }

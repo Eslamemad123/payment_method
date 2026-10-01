@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:payment_method/Features/checkout/data/repo/repo_implementation.dart';
 import 'package:payment_method/Features/checkout/presentation/manger/cubit/stripe_payment_cubit.dart';
-import 'package:payment_method/Features/checkout/presentation/views/payment_details.dart';
 import 'package:payment_method/Features/checkout/presentation/views/widgets/cart_info_item.dart';
+import 'package:payment_method/Features/checkout/presentation/views/widgets/payment_methods_bottom_sheet.dart';
 import 'package:payment_method/Features/checkout/presentation/views/widgets/total_price_widget.dart';
 import 'package:payment_method/core/widgets/custom_button.dart';
 
@@ -30,24 +30,31 @@ class MyCartViewBody extends StatelessWidget {
           CustomButton(
             text: 'Complete Payment',
             onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) {
-                    return BlocProvider(
-                      create: (context) => StripePaymentCubit(CheckPaymentImplement()),
-                      child: const PaymentDetailsView(),
-                    );
-                  },
-                ),
-              );
-
-              // showModalBottomSheet(
-              //     context: context,
-              //     shape: RoundedRectangleBorder(
-              //         borderRadius: BorderRadius.circular(16)),
+              // Navigator.of(context).push(
+              //   MaterialPageRoute(
               //     builder: (context) {
-              //       return const PaymentMethodsBottomSheet();
-              //     });
+              //       return BlocProvider(
+              //         create: (context) =>
+              //             StripePaymentCubit(CheckPaymentImplement()),
+              //         child: const PaymentDetailsView(),
+              //       );
+              //     },
+              //   ),
+              // );
+
+              showModalBottomSheet(
+                context: context,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                builder: (context) {
+                  return BlocProvider(
+                    create: (context) =>
+                        StripePaymentCubit(CheckPaymentImplement()),
+                    child: const PaymentMethodsBottomSheet(),
+                  );
+                },
+              );
             },
           ),
           const SizedBox(height: 12),

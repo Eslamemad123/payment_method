@@ -30,7 +30,7 @@ class PaymentMethodIntent {
   dynamic onBehalfOf;
   dynamic paymentMethod;
   PaymentMethodOptions? paymentMethodOptions;
-  List<String>? paymentMethodTypes;
+  List<dynamic>? paymentMethodTypes;
   dynamic processing;
   dynamic receiptEmail;
   dynamic review;
@@ -126,7 +126,9 @@ class PaymentMethodIntent {
           : PaymentMethodOptions.fromJson(
               Map<String, dynamic>.from(json['payment_method_options']),
             ),
-      paymentMethodTypes: List<String>.from(json['payment_method_types'] ?? []),
+      paymentMethodTypes: List<dynamic>.from(
+        json['payment_method_types'] ?? [],
+      ),
       processing: json['processing'],
       receiptEmail: json['receipt_email'],
       review: json['review'],

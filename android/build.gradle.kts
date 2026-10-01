@@ -1,3 +1,6 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 allprojects {
     repositories {
         google()
@@ -9,16 +12,36 @@ val newBuildDir: Directory =
     rootProject.layout.buildDirectory
         .dir("../../build")
         .get()
+
 rootProject.layout.buildDirectory.value(newBuildDir)
 
 subprojects {
-    val newSubprojectBuildDir: Directory = newBuildDir.dir(project.name)
+    val newSubprojectBuildDir: Directory =
+        newBuildDir.dir(project.name)
+
     project.layout.buildDirectory.value(newSubprojectBuildDir)
 }
+
 subprojects {
     afterEvaluate {
-        val android = extensions.findByName("android") as? com.android.build.gradle.BaseExtension
-        android?.compileSdkVersion(35)
+        val android =
+            extensions.findByName("android")
+                as? com.android.build.gradle.BaseExtension
+
+        android?.apply {
+            compileSdkVersion(36)
+            compileOptions {
+                sourceCompatibility = JavaVersion.VERSION_21
+                targetCompatibility = JavaVersion.VERSION_21
+            }
+        }
+    }
+
+    // يوحّد الـ Kotlin JVM target على 17 لكل البلجنز
+    tasks.withType<KotlinCompile>().configureEach {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_21)
+        }
     }
 }
 
@@ -26,11 +49,6 @@ subprojects {
     project.evaluationDependsOn(":app")
 }
 
-
-
-
-
-
 tasks.register<Delete>("clean") {
     delete(rootProject.layout.buildDirectory)
-}
+}
