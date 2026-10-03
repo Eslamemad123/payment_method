@@ -38,7 +38,10 @@ class PaymentMethodItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
           color: Colors.white,
         ),
-        child: Center(child: SvgPicture.asset(image)),
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: Center(child: SvgPicture.asset(image)),
+        ),
       ),
     );
   }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:payment_method/Features/checkout/presentation/manger/cubit/stripe_payment_cubit.dart';
 import 'package:payment_method/Features/checkout/presentation/views/widgets/payment_method_item.dart';
 
 class PaymentMethodsListView extends StatefulWidget {
@@ -10,8 +12,13 @@ class PaymentMethodsListView extends StatefulWidget {
 
 class _PaymentMethodsListViewState extends State<PaymentMethodsListView> {
   final List<String> paymentMethodsItems = const [
-    'assets/images/card.svg',
+    'assets/images/stripe.svg',
     'assets/images/paypal.svg',
+    'assets/images/paymob.svg',
+    'assets/images/payTaps.svg',
+    'assets/images/Fawry.svg',
+    'assets/images/kashier.svg',
+    'assets/images/googlePay.svg',
   ];
 
   int activeIndex = 0;
@@ -25,15 +32,22 @@ class _PaymentMethodsListViewState extends State<PaymentMethodsListView> {
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: GestureDetector(
-              onTap: () {
-                activeIndex = index;
-                setState(() {});
+            child: BlocBuilder<StripePaymentCubit, StripePaymentState>(
+              builder: (context, state) {
+                return GestureDetector(
+                  onTap: () {
+                    activeIndex = index;
+                    setState(() {
+                      context.read<StripePaymentCubit>().paymentMethod =
+                          activeIndex;
+                    });
+                  },
+                  child: PaymentMethodItem(
+                    isActive: activeIndex == index,
+                    image: paymentMethodsItems[index],
+                  ),
+                );
               },
-              child: PaymentMethodItem(
-                isActive: activeIndex == index,
-                image: paymentMethodsItems[index],
-              ),
             ),
           );
         },

@@ -1,6 +1,5 @@
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:payment_method/Features/checkout/data/models/payment_input_model.dart';
 import 'package:payment_method/Features/checkout/data/repo/repo.dart';
 import 'package:payment_method/core/error/faliers.dart';
@@ -17,10 +16,11 @@ class CheckPaymentImplement extends CheckPaymentrepo {
         paymentIntentInputModel: paymentIntentInputModel,
       );
       return Right(null);
-    } on Exception catch (e) {
-       log('PAYMENT ERROR: $e');
-  log('ERROR TYPE: ${e.runtimeType}');
-  log('STACK TRACE: stackTrace');
+    } on StripeException catch (e) {
+      return Left(
+        ServerFailer(errorMessage: e.error.message ?? 'oppos that is error '),
+      );
+    } catch (e) {
       return Left(ServerFailer(errorMessage: e.toString()));
     }
   }

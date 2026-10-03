@@ -17,7 +17,7 @@ class StripeService {
       contanType: Headers.formUrlEncodedContentType,
       body: paymentIntentInputModel.toJson(),
       url: 'https://api.stripe.com/v1/payment_intents',
-      token: ApiKeys.secretKey,
+      token: ApiKeys.secretKeyStripe,
     );
     var paymentIntent = PaymentMethodIntent.fromJson(response.data);
     return paymentIntent;
@@ -66,13 +66,13 @@ class StripeService {
       contanType: Headers.formUrlEncodedContentType,
       body: {'customer': idCustomer},
       url: 'https://api.stripe.com/v1/ephemeral_keys',
-      token: ApiKeys.secretKey,
+      token: ApiKeys.secretKeyStripe,
       headers: {
-        'Authorization': "Bearer ${ApiKeys.secretKey}",
+        'Authorization': "Bearer ${ApiKeys.secretKeyStripe}",
         'Stripe-Version': '2026-08-26.dahlia',
       },
     );
     var ephemeralKey = EphemeralKeyModel.fromJson(response.data);
     return ephemeralKey;
   }
-} 
+}

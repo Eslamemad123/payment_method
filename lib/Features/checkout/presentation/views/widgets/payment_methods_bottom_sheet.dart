@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:payment_method/Features/checkout/presentation/views/widgets/payment_methods_list_view.dart';
 
-import 'custom_button_b1oc_consumer.dart';
+import 'custom_button_bloc_consumer.dart';
 
 class PaymentMethodsBottomSheet extends StatelessWidget {
   const PaymentMethodsBottomSheet({super.key});
@@ -16,7 +16,7 @@ class PaymentMethodsBottomSheet extends StatelessWidget {
           SizedBox(height: 16),
           PaymentMethodsListView(),
           SizedBox(height: 32),
-          CustomButtonB1ocConsumer(),
+          CustomButtonBlocConsumer(),
         ],
       ),
     );
