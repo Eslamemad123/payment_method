@@ -43,7 +43,7 @@ class CustomButtonBlocConsumer extends StatelessWidget {
               case 2:
                 paymentPaymob();
               case 3:
-                paymentPayTaps();
+                paymentPayTaps(context);
               case 4:
                 paymentFawry();
               case 5:
