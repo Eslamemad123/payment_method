@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
 import 'package:payment_method/Features/checkout/data/models/amount_paypal_model/amount_paypal_model.dart';
 import 'package:payment_method/Features/checkout/data/models/items_order_paypal_model/items_order_paypal_model.dart';
-import 'package:payment_method/Features/checkout/presentation/views/thank_you_view.dart';
+import 'package:payment_method/Features/checkout/presentation/views/widgets/thank_you_view.dart';
 import 'package:payment_method/core/utils/api_keys.dart';
 
 void paymentPaypal(

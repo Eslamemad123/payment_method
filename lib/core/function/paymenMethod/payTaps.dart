@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_paytabs_bridge/BaseBillingShippingInfo.dart';
 import 'package:flutter_paytabs_bridge/PaymentSdkConfigurationDetails.dart';
 import 'package:flutter_paytabs_bridge/PaymentSdkLocale.dart';
-import 'package:payment_method/Features/checkout/presentation/views/thank_you_view.dart';
+import 'package:payment_method/Features/checkout/presentation/views/widgets/thank_you_view.dart';
 import 'package:payment_method/core/utils/api_keys.dart';
 import 'package:flutter_paytabs_bridge/flutter_paytabs_bridge.dart';
 

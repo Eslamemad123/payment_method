@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:payment_method/Features/checkout/presentation/manger/cubit/stripe_payment_cubit.dart';
-import 'package:payment_method/Features/checkout/presentation/views/thank_you_view.dart';
+import 'package:payment_method/Features/checkout/presentation/views/widgets/thank_you_view.dart';
 import 'package:payment_method/core/function/getTransctionPaypal.dart';
 import 'package:payment_method/core/function/paymenMethod/fawry.dart';
 import 'package:payment_method/core/function/paymenMethod/googlePay.dart';

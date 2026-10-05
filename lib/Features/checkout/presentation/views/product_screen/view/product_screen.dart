@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:payment_method/Features/checkout/presentation/views/widgetttttttttttttttttttttt/products_view_body.dart';
+import 'package:payment_method/Features/checkout/presentation/views/product_screen/widget/products_view_body.dart';
 
 class MyProductsScreen extends StatelessWidget {
   const MyProductsScreen({super.key});
@@ -8,9 +8,7 @@ class MyProductsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       backgroundColor: Color(0xFFF8FAFC),
-      body: SafeArea(
-        child: ProductsViewBody(),
-      ),
+      body: SafeArea(child: ProductsViewBody()),
     );
   }
 }

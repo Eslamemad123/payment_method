@@ -9,10 +9,7 @@ import 'package:payment_method/Features/checkout/presentation/views/widgets/paym
 class ProductDetailsView extends StatefulWidget {
   final ProductItemModel product;
 
-  const ProductDetailsView({
-    super.key,
-    required this.product,
-  });
+  const ProductDetailsView({super.key, required this.product});
 
   @override
   State<ProductDetailsView> createState() => _ProductDetailsViewState();
@@ -171,9 +168,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       decoration: const BoxDecoration(
         color: Color(0xFFF8FAFC),
-        border: Border(
-          bottom: BorderSide(color: Color(0xFFF1F5F9), width: 1),
-        ),
+        border: Border(bottom: BorderSide(color: Color(0xFFF1F5F9), width: 1)),
       ),
       child: Row(
         children: [
@@ -220,11 +215,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
           const CircleAvatar(
             radius: 17,
             backgroundColor: Color(0xFF4338CA),
-            child: Icon(
-              Icons.person,
-              color: Colors.white,
-              size: 20,
-            ),
+            child: Icon(Icons.person, color: Colors.white, size: 20),
           ),
         ],
       ),
@@ -309,7 +300,9 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
               ),
               child: Icon(
                 _isFavorite ? Icons.favorite : Icons.favorite_border_rounded,
-                color: _isFavorite ? const Color(0xFFEF4444) : const Color(0xFF0F172A),
+                color: _isFavorite
+                    ? const Color(0xFFEF4444)
+                    : const Color(0xFF0F172A),
                 size: 20,
               ),
             ),
@@ -344,7 +337,10 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
               itemBuilder: (context, index) {
                 return Center(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 36.0),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20.0,
+                      vertical: 36.0,
+                    ),
                     child: Image.asset(
                       images[index],
                       fit: BoxFit.contain,
@@ -372,7 +368,10 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
               children: [
                 // Series Tag
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 5,
+                  ),
                   decoration: BoxDecoration(
                     color: Colors.white.withValues(alpha: 0.92),
                     borderRadius: BorderRadius.circular(20),
@@ -396,7 +395,10 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                 ),
                 // Rating Pill
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 5,
+                  ),
                   decoration: BoxDecoration(
                     color: Colors.white.withValues(alpha: 0.92),
                     borderRadius: BorderRadius.circular(20),
@@ -564,14 +566,10 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
         for (int i = 0; i < highlights.length; i += 2) ...[
           Row(
             children: [
-              Expanded(
-                child: _buildHighlightChip(highlights[i]),
-              ),
+              Expanded(child: _buildHighlightChip(highlights[i])),
               if (i + 1 < highlights.length) ...[
                 const Gap(10),
-                Expanded(
-                  child: _buildHighlightChip(highlights[i + 1]),
-                ),
+                Expanded(child: _buildHighlightChip(highlights[i + 1])),
               ] else ...[
                 const Gap(10),
                 const Expanded(child: SizedBox()),
@@ -593,11 +591,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
       ),
       child: Row(
         children: [
-          Icon(
-            highlight.icon,
-            size: 18,
-            color: const Color(0xFF4338CA),
-          ),
+          Icon(highlight.icon, size: 18, color: const Color(0xFF4338CA)),
           const Gap(8),
           Expanded(
             child: Text(
@@ -688,11 +682,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                   child: const SizedBox(
                     width: 36,
                     height: 36,
-                    child: Icon(
-                      Icons.add,
-                      size: 18,
-                      color: Color(0xFF4338CA),
-                    ),
+                    child: Icon(Icons.add, size: 18, color: Color(0xFF4338CA)),
                   ),
                 ),
               ),
@@ -729,11 +719,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(
-              Icons.sync_rounded,
-              size: 16,
-              color: Color(0xFF4338CA),
-            ),
+            Icon(Icons.sync_rounded, size: 16, color: Color(0xFF4338CA)),
             Gap(6),
             Text(
               '30-Day Hassle Returns',

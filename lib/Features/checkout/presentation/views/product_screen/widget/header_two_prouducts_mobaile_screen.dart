@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
+import 'fintech_demo_badge_header_product_screen.dart';
+
 class HeaderTwoProuductsMobaileScreen extends StatelessWidget {
   const HeaderTwoProuductsMobaileScreen({super.key});
 
@@ -23,7 +25,7 @@ class HeaderTwoProuductsMobaileScreen extends StatelessWidget {
                 ),
               ),
               Spacer(),
-              _FintechDemoBadge(),
+              FintechDemoBadgeHeaderProductScreen(),
             ],
           ),
           Gap(6),
@@ -34,40 +36,6 @@ class HeaderTwoProuductsMobaileScreen extends StatelessWidget {
               fontWeight: FontWeight.w400,
               color: Color(0xFF64748B),
               height: 1.3,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _FintechDemoBadge extends StatelessWidget {
-  const _FintechDemoBadge();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: const Color(0xFFEDE9FE),
-      ),
-      child: const Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(
-            Icons.verified_outlined,
-            size: 15,
-            color: Color(0xFF4338CA),
-          ),
-          Gap(4),
-          Text(
-            'Fintech Demo',
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w600,
-              color: Color(0xFF4338CA),
             ),
           ),
         ],
