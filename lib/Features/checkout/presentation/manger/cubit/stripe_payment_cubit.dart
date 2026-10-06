@@ -9,6 +9,7 @@ class StripePaymentCubit extends Cubit<StripePaymentState> {
   StripePaymentCubit(this.checkPayment) : super(StripePaymentInitial());
   final CheckPaymentrepo checkPayment;
   int paymentMethod = 0;
+
   Future makePayment({
     required PaymentIntentInputModel paymentIntentInputModel,
   }) async {
