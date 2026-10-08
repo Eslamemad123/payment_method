@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:payment_method/Features/checkout/data/models/product_item_model.dart';
 import 'package:payment_method/Features/checkout/presentation/views/productDetails/view/product_details_view.dart';
+import 'package:payment_method/Features/checkout/presentation/views/product_screen/widget/header_two_prouducts_mobaile_screen.dart';
 
 import 'cart_item.dart';
 import 'header_mobaile_screen.dart';
-import 'header_two_prouducts_mobaile_screen.dart';
 import 'item_productwidget.dart';
 import 'list_products_mobaile_screen.dart';
 

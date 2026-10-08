@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
+import 'cart_numbet_item_header.dart';
+import 'header_tablet_category.dart';
+
 class HeaderProuductsMobaileScreen extends StatelessWidget {
-  const HeaderProuductsMobaileScreen({super.key});
+  const HeaderProuductsMobaileScreen({super.key, this.width = 800});
+  final int width;
 
   @override
   Widget build(BuildContext context) {
@@ -10,36 +14,7 @@ class HeaderProuductsMobaileScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       child: Row(
         children: [
-          Stack(
-            clipBehavior: Clip.none,
-            children: [
-              const Icon(
-                Icons.shopping_bag_outlined,
-                size: 28,
-                color: Color(0xFF0F172A),
-              ),
-              Positioned(
-                top: -3,
-                right: -5,
-                child: Container(
-                  padding: const EdgeInsets.all(4),
-                  decoration: const BoxDecoration(
-                    color: Color(0xFF4338CA),
-                    shape: BoxShape.circle,
-                  ),
-                  child: const Text(
-                    '6',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 10,
-                      fontWeight: FontWeight.bold,
-                      height: 1,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+          CartNumbetItemHeader(numberItem: 6),
           const Gap(14),
           const Text(
             'Store Catalog',
@@ -50,14 +25,11 @@ class HeaderProuductsMobaileScreen extends StatelessWidget {
             ),
           ),
           const Spacer(),
+          if (width > 600) ...[HeaderTabletCategory(), Spacer()],
           const CircleAvatar(
             radius: 18,
             backgroundColor: Color(0xFF4338CA),
-            child: Icon(
-              Icons.person,
-              color: Colors.white,
-              size: 20,
-            ),
+            child: Icon(Icons.person, color: Colors.white, size: 20),
           ),
         ],
       ),
