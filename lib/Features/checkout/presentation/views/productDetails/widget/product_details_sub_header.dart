@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class ProductDetailsSubHeader extends StatefulWidget {
-  const ProductDetailsSubHeader({super.key});
+  final bool showBackButton;
+
+  const ProductDetailsSubHeader({
+    super.key,
+    this.showBackButton = true,
+  });
 
   @override
   State<ProductDetailsSubHeader> createState() =>
@@ -15,27 +20,38 @@ class _ProductDetailsSubHeaderState extends State<ProductDetailsSubHeader> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Material(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(20),
-          child: InkWell(
-            onTap: () => Navigator.pop(context),
+        if (widget.showBackButton) ...[
+          Material(
+            color: Colors.white,
             borderRadius: BorderRadius.circular(20),
-            child: Container(
-              width: 40,
-              height: 40,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(color: const Color(0xFFE2E8F0)),
-              ),
-              child: const Icon(
-                Icons.arrow_back,
-                color: Color(0xFF0F172A),
-                size: 20,
+            child: InkWell(
+              onTap: () => Navigator.pop(context),
+              borderRadius: BorderRadius.circular(20),
+              child: Container(
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(color: const Color(0xFFE2E8F0)),
+                ),
+                child: const Icon(
+                  Icons.arrow_back,
+                  color: Color(0xFF0F172A),
+                  size: 20,
+                ),
               ),
             ),
           ),
-        ),
+        ] else ...[
+          const Text(
+            'Product Details',
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w700,
+              color: Color(0xFF0F172A),
+            ),
+          ),
+        ],
         const Spacer(),
         // IN STOCK Badge
         Container(

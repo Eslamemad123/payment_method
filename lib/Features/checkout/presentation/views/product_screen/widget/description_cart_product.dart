@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class DescriptionCartProduct extends StatelessWidget {
-  const new({super.key, required this.title, required this.description});
+  const DescriptionCartProduct({
+    super.key,
+    required this.title,
+    required this.description,
+  });
 
   final String description;
   final String title;

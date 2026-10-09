@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:payment_method/Features/checkout/presentation/views/product_screen/widget/products_model_list.dart';
+import 'package:payment_method/core/const/products_model_list.dart';
 
 import 'product_card.dart';
 

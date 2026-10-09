@@ -16,8 +16,15 @@ import 'title_product_details.dart';
 
 class ProductDetailsViewBody extends StatefulWidget {
   final ProductItemModel product;
+  final bool showHeader;
+  final bool showBackButton;
 
-  const ProductDetailsViewBody({super.key, required this.product});
+  const ProductDetailsViewBody({
+    super.key,
+    required this.product,
+    this.showHeader = true,
+    this.showBackButton = true,
+  });
 
   @override
   State<ProductDetailsViewBody> createState() => _ProductDetailsViewBodyState();
@@ -35,7 +42,8 @@ class _ProductDetailsViewBodyState extends State<ProductDetailsViewBody> {
 
     return Column(
       children: [
-        HeaderProuductsMobaileScreen(width: MediaQuery.of(context).size.width),
+        if (widget.showHeader)
+          HeaderProuductsMobaileScreen(width: MediaQuery.of(context).size.width),
         Expanded(
           child: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
@@ -44,7 +52,7 @@ class _ProductDetailsViewBodyState extends State<ProductDetailsViewBody> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Gap(6),
-                ProductDetailsSubHeader(),
+                ProductDetailsSubHeader(showBackButton: widget.showBackButton),
                 const Gap(14),
                 ProductHeroImageCard(images: product.images),
                 const Gap(20),

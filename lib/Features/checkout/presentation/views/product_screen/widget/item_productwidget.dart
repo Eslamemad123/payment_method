@@ -7,7 +7,7 @@ import 'package:payment_method/Features/checkout/presentation/views/product_scre
 import 'description_cart_product.dart';
 
 class ItemProductwidget extends StatelessWidget {
-  const new({super.key, required this.product});
+  const ItemProductwidget({super.key, required this.product});
 
   final ProductItemModel product;
 
@@ -23,6 +23,7 @@ class ItemProductwidget extends StatelessWidget {
               imagePath: product.image,
               badge: product.badge,
               badgeColor: product.badgeColor,
+              size: 96,
             ),
             const Gap(14),
             // Product Details
