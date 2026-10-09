@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:payment_method/Features/checkout/data/models/product_item_model.dart';
+import 'package:payment_method/Features/checkout/presentation/views/productDetails/widget/product_details_tablet_body.dart';
 import 'package:payment_method/Features/checkout/presentation/views/productDetails/widget/product_details_view_body.dart';
 
 class ProductDetailsView extends StatelessWidget {
@@ -10,9 +11,17 @@ class ProductDetailsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8FAFC),
+      backgroundColor: Colors.white,
       body: SafeArea(
-        child: ProductDetailsViewBody(product: product),
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            if (constraints.maxWidth < 700) {
+              return ProductDetailsViewBody(product: product);
+            } else {
+              return ProductDetailsTabletBody(product: product);
+            }
+          },
+        ),
       ),
     );
   }

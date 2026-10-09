@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:payment_method/Features/checkout/data/models/product_item_model.dart';
+import 'package:payment_method/Features/checkout/presentation/views/productDetails/widget/product_details_method_supported_payment.dart';
 import 'package:payment_method/Features/checkout/presentation/views/product_screen/widget/header_mobaile_screen.dart';
 
 import 'product_buy_now_button.dart';
@@ -23,32 +24,8 @@ class ProductDetailsViewBody extends StatefulWidget {
 }
 
 class _ProductDetailsViewBodyState extends State<ProductDetailsViewBody> {
-  late int quantity;
+  late int quantity = 3;
   bool isFavorite = false;
-
-  @override
-  void initState() {
-    super.initState();
-    quantity = widget.product.quantity > 0 ? widget.product.quantity : 1;
-  }
-
-  int get unitPrice => int.tryParse(widget.product.price) ?? 0;
-  int get subtotal => unitPrice * quantity;
-
-  void incrementQuantity() {
-    setState(() {
-      quantity++;
-    });
-  }
-
-  void decrementQuantity() {
-    if (quantity > 1) {
-      setState(() {
-        quantity--;
-      });
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     final product = widget.product;
@@ -58,7 +35,7 @@ class _ProductDetailsViewBodyState extends State<ProductDetailsViewBody> {
 
     return Column(
       children: [
-        const HeaderProuductsMobaileScreen(),
+        HeaderProuductsMobaileScreen(width: MediaQuery.of(context).size.width),
         Expanded(
           child: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
@@ -86,14 +63,16 @@ class _ProductDetailsViewBodyState extends State<ProductDetailsViewBody> {
                 const Gap(20),
                 ProductQuantitySelector(
                   quantity: quantity,
-                  subtotal: subtotal,
-                  onIncrement: incrementQuantity,
-                  onDecrement: decrementQuantity,
+                  subtotal: 2,
+                  onIncrement: () {},
+                  onDecrement: () {},
                 ),
                 const Gap(14),
                 const ProductWarrantyRow(),
                 const Gap(24),
-                ProductBuyNowButton(subtotal: subtotal),
+                ProductBuyNowButton(subtotal: 3),
+                Gap(12),
+                ProductDetailsMethodSupportedPayment(),
                 const Gap(24),
               ],
             ),

@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:payment_method/Features/checkout/data/models/product_item_model.dart';
 import 'package:payment_method/core/const/app_assets.dart';
@@ -72,6 +70,150 @@ const List<ProductItemModel> products = [
       ),
       TechnicalHighlight(icon: Icons.lightbulb_outline, title: 'RGB Per-Key'),
       TechnicalHighlight(icon: Icons.cable_outlined, title: 'Type-C & 2.4G'),
+    ],
+  ),
+  ProductItemModel(
+    title: 'Aura Smartwatch Pro',
+    category: 'WEARABLES & SMART TECH',
+    tag: 'GEN-4 SENSOR MATRIX',
+    sku: 'SKU: AUR-PRO-8924',
+    rating: '4.9',
+    description: 'AMOLED display with all-day health & sleep analytics.',
+    longDescription:
+        'Engineered from grade-5 titanium and scratch-resistant sapphire crystal. The Aura Smartwatch Pro combines a breathtaking 1.4-inch dynamic AMOLED retina display with proprietary 14-day ultra-power battery architecture and multi-frequency biometric sensors for continuous ECG, SpO2, and deep metabolic sleep tracking.',
+    price: '299',
+    originalPrice: '349',
+    image: AppAssets.clock,
+    images: [
+      AppAssets.clock,
+      AppAssets.clock2,
+      AppAssets.clock3,
+      AppAssets.clock4,
+    ],
+    badge: 'Hot',
+    badgeColor: Color(0xFFEA580C),
+    quantity: 3,
+    highlights: [
+      TechnicalHighlight(
+        icon: Icons.stay_current_portrait_outlined,
+        label: 'DISPLAY',
+        title: '1.4" AMOLED 1000nits',
+        subtitle: 'Sapphire Crystal • Always-On',
+      ),
+      TechnicalHighlight(
+        icon: Icons.battery_charging_full_rounded,
+        label: 'BATTERY LIFE',
+        title: '14-Day Dual-Engine',
+        subtitle: 'Fast Qi Charge in 45m',
+      ),
+      TechnicalHighlight(
+        icon: Icons.sensors_outlined,
+        label: 'SENSORS',
+        title: 'BioActive Photopleth',
+        subtitle: 'ECG, SpO2 & Skin Temp',
+      ),
+      TechnicalHighlight(
+        icon: Icons.shield_outlined,
+        label: 'RESISTANCE',
+        title: '5 ATM + IP68 Rating',
+        subtitle: 'Dive-safe up to 50 meters',
+      ),
+    ],
+  ),
+  ProductItemModel(
+    title: 'Aura Smartwatch Pro',
+    category: 'FLAGSHIP WEARABLE',
+    tag: 'SERIES X - TITANIUM',
+    rating: '4.9 (1,420)',
+    description: 'AMOLED display with all-day health & sleep analytics.',
+    longDescription: 'Engineered for high performance and everyday elegance. Features a brilliant 1.43-inch always-on AMOLED display, comprehensive sapphire biometric tracking, dual-band GPS, and up to 14 days of battery life on a single charge. Crafted with aerospace-grade aluminum and interchangeable fluoroelastomer strap.',
+    price: '299',
+    originalPrice: '349',
+    image: AppAssets.clock,
+    images: [
+      AppAssets.clock,
+      AppAssets.clock2,
+      AppAssets.clock3,
+      AppAssets.clock4,
+    ],
+    badge: 'Hot',
+    badgeColor: Color(0xFFEA580C),
+    quantity: 3,
+    highlights: [
+      TechnicalHighlight(icon: Icons.speed_outlined, title: 'AMOLED Display'),
+      TechnicalHighlight(
+        icon: Icons.battery_charging_full_rounded,
+        title: '14-Day Battery',
+      ),
+      TechnicalHighlight(
+        icon: Icons.water_drop_outlined,
+        title: '50m Water Resistant',
+      ),
+      TechnicalHighlight(icon: Icons.sensors_outlined, title: 'Health Sensors'),
+    ],
+  ),
+  ProductItemModel(
+    title: 'Aura Smartwatch Pro',
+    category: 'FLAGSHIP WEARABLE',
+    tag: 'SERIES X - TITANIUM',
+    rating: '4.9 (1,420)',
+    description: 'AMOLED display with all-day health & sleep analytics.',
+    longDescription: 'Engineered for high performance and everyday elegance. Features a brilliant 1.43-inch always-on AMOLED display, comprehensive sapphire biometric tracking, dual-band GPS, and up to 14 days of battery life on a single charge. Crafted with aerospace-grade aluminum and interchangeable fluoroelastomer strap.',
+    price: '299',
+    originalPrice: '349',
+    image: AppAssets.clock,
+    images: [
+      AppAssets.clock,
+      AppAssets.clock2,
+      AppAssets.clock3,
+      AppAssets.clock4,
+    ],
+    badge: 'Hot',
+    badgeColor: Color(0xFFEA580C),
+    quantity: 3,
+    highlights: [
+      TechnicalHighlight(icon: Icons.speed_outlined, title: 'AMOLED Display'),
+      TechnicalHighlight(
+        icon: Icons.battery_charging_full_rounded,
+        title: '14-Day Battery',
+      ),
+      TechnicalHighlight(
+        icon: Icons.water_drop_outlined,
+        title: '50m Water Resistant',
+      ),
+      TechnicalHighlight(icon: Icons.sensors_outlined, title: 'Health Sensors'),
+    ],
+  ),
+  ProductItemModel(
+    title: 'Aura Smartwatch Pro',
+    category: 'FLAGSHIP WEARABLE',
+    tag: 'SERIES X - TITANIUM',
+    rating: '4.9 (1,420)',
+    description: 'AMOLED display with all-day health & sleep analytics.',
+    longDescription: 'Engineered for high performance and everyday elegance. Features a brilliant 1.43-inch always-on AMOLED display, comprehensive sapphire biometric tracking, dual-band GPS, and up to 14 days of battery life on a single charge. Crafted with aerospace-grade aluminum and interchangeable fluoroelastomer strap.',
+    price: '299',
+    originalPrice: '349',
+    image: AppAssets.clock,
+    images: [
+      AppAssets.clock,
+      AppAssets.clock2,
+      AppAssets.clock3,
+      AppAssets.clock4,
+    ],
+    badge: 'Hot',
+    badgeColor: Color(0xFFEA580C),
+    quantity: 3,
+    highlights: [
+      TechnicalHighlight(icon: Icons.speed_outlined, title: 'AMOLED Display'),
+      TechnicalHighlight(
+        icon: Icons.battery_charging_full_rounded,
+        title: '14-Day Battery',
+      ),
+      TechnicalHighlight(
+        icon: Icons.water_drop_outlined,
+        title: '50m Water Resistant',
+      ),
+      TechnicalHighlight(icon: Icons.sensors_outlined, title: 'Health Sensors'),
     ],
   ),
   ProductItemModel(

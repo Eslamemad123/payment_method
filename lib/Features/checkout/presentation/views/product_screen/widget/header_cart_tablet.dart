@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:payment_method/Features/checkout/presentation/views/cart_screen/view/shopping_cart_view.dart';
 
 import 'titel_header_tablet.dart';
 
@@ -30,7 +31,18 @@ class CheckoutHeader extends StatelessWidget {
           ),
         ],
       ),
-      child: TitelHeaderTablet(total: total, onCheckout: onCheckout),
+      child: TitelHeaderTablet(
+        total: total,
+        onCheckout: onCheckout ??
+            () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ShoppingCartView(),
+                ),
+              );
+            },
+      ),
     );
   }
 }

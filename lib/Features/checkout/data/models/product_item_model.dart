@@ -3,10 +3,14 @@ import 'package:flutter/material.dart';
 class TechnicalHighlight {
   final IconData icon;
   final String title;
+  final String? label;
+  final String? subtitle;
 
   const TechnicalHighlight({
     required this.icon,
     required this.title,
+    this.label,
+    this.subtitle,
   });
 }
 
@@ -14,6 +18,7 @@ class ProductItemModel {
   final String title;
   final String category;
   final String tag;
+  final String sku;
   final String rating;
   final String description;
   final String longDescription;
@@ -30,6 +35,7 @@ class ProductItemModel {
     required this.title,
     this.category = 'FLAGSHIP WEARABLE',
     this.tag = 'SERIES X - TITANIUM',
+    this.sku = 'SKU: AUR-PRO-8924',
     this.rating = '4.9 (1,420)',
     required this.description,
     this.longDescription = '',

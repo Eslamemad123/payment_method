@@ -4,18 +4,18 @@ class ProductImageThumbnail extends StatelessWidget {
   final String imagePath;
   final String? badge;
   final Color? badgeColor;
+  final double? size;
 
   const ProductImageThumbnail({
     required this.imagePath,
     this.badge,
     this.badgeColor,
+    this.size,
   });
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 96,
-      height: 96,
+    return Expanded(
       child: Stack(
         children: [
           Container(
@@ -27,8 +27,8 @@ class ProductImageThumbnail extends StatelessWidget {
               borderRadius: BorderRadius.circular(16),
               child: Image.asset(
                 imagePath,
-                width: 96,
-                height: 96,
+                width: size ?? 96,
+                height: size ?? 96,
                 fit: BoxFit.cover,
                 errorBuilder: (context, error, stackTrace) {
                   return Container(

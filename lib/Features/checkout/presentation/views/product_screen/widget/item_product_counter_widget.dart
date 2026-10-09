@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:payment_method/Features/checkout/presentation/views/product_screen/widget/quantity_control_button.dart';
 
-class itemProductCounterWidget extends StatelessWidget {
+class ItemProductCounterWidget extends StatelessWidget {
   const new({super.key, required this.quantity});
 
   final int quantity;
@@ -18,16 +18,17 @@ class itemProductCounterWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
       child: Row(
         children: [
-          const Text(
-            'Selected Quantity',
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-              color: Color(0xFF334155),
+          Expanded(
+            child: const Text(
+              maxLines: 2,
+              'Selected Quantity',
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+                color: Color(0xFF334155),
+              ),
             ),
           ),
-          const Spacer(),
-          // Minus Button
           QuantityControlButton(
             icon: Icons.remove,
             isPrimary: false,
