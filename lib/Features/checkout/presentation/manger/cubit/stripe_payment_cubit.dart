@@ -29,3 +29,4 @@ class StripePaymentCubit extends Cubit<StripePaymentState> {
     );
   }
 }
+

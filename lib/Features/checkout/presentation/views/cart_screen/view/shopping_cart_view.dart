@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:payment_method/Features/checkout/presentation/views/cart_screen/widget/cart_empty_state.dart';
-import 'package:payment_method/Features/checkout/presentation/views/cart_screen/widget/cart_top_header.dart';
+import 'package:payment_method/Features/checkout/presentation/views/cart_screen/widget/body/cart_empty_state.dart';
+import 'package:payment_method/Features/checkout/presentation/views/cart_screen/widget/header/cart_top_header.dart';
 import 'package:payment_method/core/const/cartItem.dart';
 
 import '../widget/cart_items.dart';

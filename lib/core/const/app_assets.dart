@@ -4,10 +4,10 @@ class AppAssets {
   // ================== PRODUCT IMAGES ==================
 
   // AirPods
-  static const String airbuds = 'assets/new image/airbuds.jpg';
-  static const String airbuds2 = 'assets/new image/airbuds2.jpg';
-  static const String airbuds3 = 'assets/new image/airbuds3.jpg';
-  static const String airbuds4 = 'assets/new image/airbuds4.jpg';
+  static const String airbuds = 'assets/new image/airbouds.jpg';
+  static const String airbuds2 = 'assets/new image/airbouds2.jpg';
+  static const String airbuds3 = 'assets/new image/airbouds3.jpg';
+  static const String airbuds4 = 'assets/new image/airbouds4.jpg';
 
   // Cameras
   static const String camera = 'assets/new image/camera.jpg';
@@ -76,4 +76,5 @@ class AppAssets {
   static const String errorJSON = 'assets/json/error.json';
 
   static const String loadingJSON = 'assets/json/loading.json';
+  static const String EmptyCartJSON = 'assets/new image/Empty_cart.json';
 }

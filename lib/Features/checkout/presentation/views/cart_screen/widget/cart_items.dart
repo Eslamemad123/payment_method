@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:payment_method/Features/checkout/data/models/cart_item_model.dart';
-import 'package:payment_method/Features/checkout/presentation/views/cart_screen/widget/cart_order_summary.dart';
-import 'package:payment_method/Features/checkout/presentation/views/cart_screen/widget/cart_shipping_banner.dart';
-import 'package:payment_method/Features/checkout/presentation/views/cart_screen/widget/cart_title_bar.dart';
-import 'package:payment_method/Features/checkout/presentation/views/cart_screen/widget/list_items_cart.dart';
+import 'package:payment_method/Features/checkout/presentation/views/cart_screen/widget/summary/cart_order_summary.dart';
+import 'package:payment_method/Features/checkout/presentation/views/cart_screen/widget/header/cart_shipping_banner.dart';
+import 'package:payment_method/Features/checkout/presentation/views/cart_screen/widget/header/cart_title_bar.dart';
+import 'package:payment_method/Features/checkout/presentation/views/cart_screen/widget/body/list_items_cart.dart';
 
 class CartItems extends StatelessWidget {
   const CartItems({super.key, required this.cartItems});

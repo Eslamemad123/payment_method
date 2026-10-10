@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:device_preview/device_preview.dart';
-import 'package:payment_method/Features/checkout/presentation/views/product_screen.dart';
+import 'package:payment_method/Features/checkout/presentation/views/layout_builder_customize.dart';
 import 'package:payment_method/core/utils/api_keys.dart';
 
 // غيّر القيمة دي للتبديل بين الوضعين

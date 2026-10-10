@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:payment_method/Features/checkout/data/models/product_item_model.dart';
-import 'package:payment_method/Features/checkout/presentation/views/productDetails/widget/product_details_method_supported_payment.dart';
-import 'package:payment_method/Features/checkout/presentation/views/product_screen/widget/header_mobaile_screen.dart';
+import 'package:payment_method/Features/checkout/presentation/views/productDetails/widget/QuantityAndPayment/product_details_method_supported_payment.dart';
+import 'package:payment_method/Features/checkout/presentation/views/productDetails/widget/body/product_technical_highlights.dart';
+import 'package:payment_method/Features/checkout/presentation/views/productDetails/widget/body/product_warranty_row.dart';
+import 'package:payment_method/Features/checkout/presentation/views/product_screen/widget/header/header_mobaile_screen.dart';
 
-import 'product_buy_now_button.dart';
-import 'product_description_box.dart';
-import 'product_details_sub_header.dart';
-import 'product_hero_image_card.dart';
-import 'product_price_row.dart';
-import 'product_quantity_selector.dart';
-import 'product_technical_highlights.dart';
-import 'product_warranty_row.dart';
-import 'title_product_details.dart';
+import 'QuantityAndPayment/product_buy_now_button.dart';
+import 'body/product_description_box.dart';
+import 'header/product_details_sub_header.dart';
+import 'header/product_hero_image_card.dart';
+import 'body/product_price_row.dart';
+import 'QuantityAndPayment/product_quantity_selector.dart';
+import 'body/title_product_details.dart';
 
 class ProductDetailsViewBody extends StatefulWidget {
   final ProductItemModel product;
@@ -43,7 +43,9 @@ class _ProductDetailsViewBodyState extends State<ProductDetailsViewBody> {
     return Column(
       children: [
         if (widget.showHeader)
-          HeaderProuductsMobaileScreen(width: MediaQuery.of(context).size.width),
+          HeaderProuductsMobaileScreen(
+            width: MediaQuery.of(context).size.width,
+          ),
         Expanded(
           child: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),

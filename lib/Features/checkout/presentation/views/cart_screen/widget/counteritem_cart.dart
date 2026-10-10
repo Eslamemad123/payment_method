@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:payment_method/Features/checkout/presentation/views/productDetails/widget/product_quantity_selector.dart';
+
+import '../../productDetails/widget/QuantityAndPayment/add_sub_items_count.dart';
 
 class CounteritemCart extends StatelessWidget {
   const new({
@@ -29,7 +30,8 @@ class CounteritemCart extends StatelessWidget {
           ),
           padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
           child: AddSubItemsCount(
-            color: Colors.white,
+            colorSub: Colors.white,
+            coloradd: Colors.deepPurple,
             size: 18,
             onDecrement: onDecrease,
             onIncrement: onIncrease,
