@@ -5,7 +5,6 @@ class TechnicalHighlight {
   final String title;
   final String? label;
   final String? subtitle;
-
   const TechnicalHighlight({
     required this.icon,
     required this.title,
@@ -15,6 +14,7 @@ class TechnicalHighlight {
 }
 
 class ProductItemModel {
+  final String id;
   final String title;
   final String category;
   final String tag;
@@ -22,7 +22,7 @@ class ProductItemModel {
   final String rating;
   final String description;
   final String longDescription;
-  final String price;
+  final double price;
   final String originalPrice;
   final String image;
   final List<String> images;
@@ -33,6 +33,7 @@ class ProductItemModel {
 
   const ProductItemModel({
     required this.title,
+    required this.id,
     this.category = 'FLAGSHIP WEARABLE',
     this.tag = 'SERIES X - TITANIUM',
     this.sku = 'SKU: AUR-PRO-8924',

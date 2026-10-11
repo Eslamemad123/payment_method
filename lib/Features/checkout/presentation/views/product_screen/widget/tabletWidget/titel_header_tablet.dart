@@ -4,9 +4,15 @@ import 'package:payment_method/Features/checkout/presentation/views/product_scre
 import 'price_header_table.dart';
 
 class TitelHeaderTablet extends StatelessWidget {
-  const new({super.key, required this.total, required this.onCheckout});
+  const TitelHeaderTablet({
+    super.key,
+    required this.total,
+    this.cartCount = 0,
+    required this.onCheckout,
+  });
 
   final double total;
+  final int cartCount;
   final VoidCallback? onCheckout;
 
   @override
@@ -14,12 +20,12 @@ class TitelHeaderTablet extends StatelessWidget {
     return Row(
       children: [
         Container(
-          padding: EdgeInsetsDirectional.all(4),
-          decoration: BoxDecoration(
+          padding: const EdgeInsetsDirectional.all(4),
+          decoration: const BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(10)),
-            color: const Color.fromARGB(70, 115, 108, 218),
+            color: Color.fromARGB(70, 115, 108, 218),
           ),
-          child: CartNumbetItemHeader(numberItem: 3),
+          child: CartNumbetItemHeader(numberItem: cartCount),
         ),
         const SizedBox(width: 12),
 

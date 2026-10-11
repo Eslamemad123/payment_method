@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
+import 'package:payment_method/Features/checkout/presentation/views/cart_screen/cubit/cart_cubit.dart';
+import 'package:payment_method/Features/checkout/presentation/views/cart_screen/cubit/cart_state.dart';
+import 'package:payment_method/Features/checkout/presentation/views/cart_screen/widget/body/cart_empty_state.dart';
 import 'package:payment_method/Features/checkout/presentation/views/cart_screen/widget/cart_items.dart';
 import 'package:payment_method/Features/checkout/presentation/views/productDetails/widget/product_details_view_body.dart';
 import 'package:payment_method/Features/checkout/presentation/views/product_screen/widget/tabletWidget/grid_view_tablet.dart';
 import 'package:payment_method/Features/checkout/presentation/views/product_screen/widget/header/header_mobaile_screen.dart';
 import 'package:payment_method/core/const/app_assets.dart';
 import 'package:payment_method/core/const/products_model_list.dart';
-import 'package:payment_method/core/const/cartItem.dart';
 
 class ProductsScreenDesktop extends StatefulWidget {
   const ProductsScreenDesktop({super.key});
@@ -42,7 +45,17 @@ class _ProductsScreenDesktopState extends State<ProductsScreenDesktop> {
                       flex: 4,
                       child: Container(
                         color: Colors.white,
-                        child: CartItems(cartItems: cartItems),
+                        child: BlocBuilder<CartCubit, CartState>(
+                          builder: (context, state) {
+                            return state.items.isEmpty
+                                ? const CartEmptyState()
+                                : CartItems(
+                                    cartItems: state.items,
+                                    totalCount: state.itemsCount,
+                                    subtotal: state.subTotal,
+                                  );
+                          },
+                        ),
                       ),
                     ),
 

@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:payment_method/Features/checkout/presentation/views/productDetails/widget/header/product_hero_image_card.dart';
 
 class AnimatedContainerImagesDetailsProducts extends StatelessWidget {
-  const new({super.key, required this.widget, required this.currentImageIndex});
+  const AnimatedContainerImagesDetailsProducts({
+    super.key,
+    required this.widget,
+    required this.currentImageIndex,
+  });
 
   final ProductHeroImageCard widget;
   final int currentImageIndex;

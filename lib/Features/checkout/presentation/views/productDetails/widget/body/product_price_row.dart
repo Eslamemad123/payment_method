@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class ProductPriceRow extends StatelessWidget {
-  final String price;
+  final double price;
   final String originalPrice;
 
   const ProductPriceRow({

@@ -1,19 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:payment_method/Features/checkout/presentation/views/productDetails/widget/QuantityAndPayment/add_sub_items_count.dart';
+import 'package:payment_method/Features/checkout/data/models/cart_item_model.dart';
+import 'package:payment_method/Features/checkout/presentation/views/productDetails/widget/QuantityAndPayment/qunatity.dart';
 
 class ItemProductCounterWidget extends StatelessWidget {
-  final int quantity;
-  final String title;
-  final VoidCallback? onIncrement;
-  final VoidCallback? onDecrement;
-
-  const ItemProductCounterWidget({
-    super.key,
-    required this.quantity,
-    this.title = 'Quantity',
-    this.onIncrement,
-    this.onDecrement,
-  });
+  final CartItemModel cartItem;
+  const ItemProductCounterWidget({super.key, required this.cartItem});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +20,7 @@ class ItemProductCounterWidget extends StatelessWidget {
         children: [
           Flexible(
             child: Text(
-              title,
+              cartItem.name,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: const TextStyle(
@@ -40,12 +31,10 @@ class ItemProductCounterWidget extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 6),
-          AddSubItemsCount(
-            onDecrement: () {},
+          CartQuantityControl(
             colorSub: Colors.white,
-            coloradd: Color(0xFF4338ca),
-            quantity: quantity,
-            onIncrement: () {},
+            coloradd: const Color(0xFF4338CA),
+            item: cartItem,
           ),
         ],
       ),

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:device_preview/device_preview.dart';
+import 'package:payment_method/Features/checkout/presentation/views/cart_screen/cubit/cart_cubit.dart';
 import 'package:payment_method/Features/checkout/presentation/views/layout_builder_customize.dart';
 import 'package:payment_method/core/utils/api_keys.dart';
 
 // غيّر القيمة دي للتبديل بين الوضعين
-const bool useDevicePreview = true;
+const bool useDevicePreview = false;
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,11 +26,14 @@ class CheckoutApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      locale: DevicePreview.locale(context),
-      builder: DevicePreview.appBuilder,
-      debugShowCheckedModeBanner: false,
-      home: const MyProductsScreen(),
+    return BlocProvider(
+      create: (context) => CartCubit(),
+      child: MaterialApp(
+        locale: DevicePreview.locale(context),
+        builder: DevicePreview.appBuilder,
+        debugShowCheckedModeBanner: false,
+        home: const MyProductsScreen(),
+      ),
     );
   }
 }

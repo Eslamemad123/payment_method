@@ -10,17 +10,14 @@ class ProductsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      physics: const BouncingScrollPhysics(),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const HeaderProuductsMobaileScreen(),
-          const HeaderTwoProuductsMobaileScreen(),
-          const CartItemsDetailsMobail(),
-          ListProductsMobaileScreen(),
-        ],
-      ),
+    return const CustomScrollView(
+      physics: BouncingScrollPhysics(),
+      slivers: [
+        SliverToBoxAdapter(child: HeaderProuductsMobaileScreen()),
+        SliverToBoxAdapter(child: HeaderTwoProuductsMobaileScreen()),
+        SliverToBoxAdapter(child: CartItemsDetailsMobail()),
+        ListProductsMobaileScreen(),
+      ],
     );
   }
 }

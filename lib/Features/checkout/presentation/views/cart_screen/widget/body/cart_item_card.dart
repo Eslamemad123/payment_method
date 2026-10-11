@@ -6,18 +6,9 @@ import '../counteritem_cart.dart';
 import 'title_and_price_cart_item.dart';
 
 class CartItemCard extends StatelessWidget {
-  final CartItemModel item;
-  final VoidCallback onIncrease;
-  final VoidCallback onDecrease;
-  final VoidCallback onRemove;
+  final CartItemModel cartItem;
 
-  const CartItemCard({
-    super.key,
-    required this.item,
-    required this.onIncrease,
-    required this.onDecrease,
-    required this.onRemove,
-  });
+  const CartItemCard({super.key, required this.cartItem});
 
   @override
   Widget build(BuildContext context) {
@@ -47,8 +38,10 @@ class CartItemCard extends StatelessWidget {
               height: 65,
               color: const Color(0xFFF8FAFC),
               child: Image.asset(
-                item.image,
+                cartItem.imageUrl,
                 fit: BoxFit.cover,
+                cacheWidth: 200,
+                cacheHeight: 200,
                 errorBuilder: (context, error, stackTrace) => Container(
                   color: const Color(0xFFF1F5F9),
                   child: const Icon(
@@ -62,15 +55,11 @@ class CartItemCard extends StatelessWidget {
           const Gap(12),
 
           // Title & Price
-          TitleAndPriceCartItem(item: item),
+          TitleAndPriceCartItem(item: cartItem),
           const Gap(8),
 
           // Stepper & Remove Action
-          CounteritemCart(
-            onDecrease: onDecrease,
-            onIncrease: onIncrease,
-            onRemove: onRemove,
-          ),
+          CounteritemCart(cartItem: cartItem),
         ],
       ),
     );

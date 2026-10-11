@@ -54,6 +54,7 @@ class ProductTabletHeroImageCard extends StatelessWidget {
                       currentImage,
                       key: ValueKey<String>(currentImage),
                       fit: BoxFit.cover,
+                      cacheWidth: 1000,
                       width: double.infinity,
                       height: double.infinity,
                       errorBuilder: (context, error, stackTrace) {

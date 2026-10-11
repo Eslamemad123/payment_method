@@ -5,13 +5,14 @@ import 'package:payment_method/core/const/app_assets.dart';
 const List<ProductItemModel> products = [
   // 1. Headphones
   ProductItemModel(
+    id: '1',
     title: 'Horizon Wireless ANC',
     category: 'FLAGSHIP AUDIO',
     tag: 'TITANIUM - SPATIAL AUDIO',
     rating: '4.8 (2,310)',
     description: 'Premium wireless headphones for immersive listening.',
     longDescription: 'Premium headphones designed for everyday listening, entertainment, and work. Their over-ear design provides a comfortable listening experience.',
-    price: '249',
+    price: 249,
     originalPrice: '299',
     image: AppAssets.headPhone,
     images: [
@@ -42,13 +43,15 @@ const List<ProductItemModel> products = [
 
   // 2. Mechanical Keyboard
   ProductItemModel(
+    id: '2',
+
     title: 'Nova Mechanical Keyboard',
     category: 'CUSTOM PERIPHERAL',
     tag: 'HOT-SWAP - RGB MATRIX',
     rating: '4.9 (890)',
     description: 'A stylish keyboard for work, gaming, and productivity.',
     longDescription: 'A modern keyboard featuring a stylish design suitable for desktop setups, office productivity, and gaming environments.',
-    price: '139',
+    price: 139,
     originalPrice: '179',
     image: AppAssets.keyboard,
     images: [
@@ -73,13 +76,15 @@ const List<ProductItemModel> products = [
 
   // 3. Smartwatch
   ProductItemModel(
+    id: '3',
+
     title: 'Aura Smartwatch Pro',
     category: 'FLAGSHIP WEARABLE',
     tag: 'SERIES X - TITANIUM',
     rating: '4.9 (1,420)',
     description: 'A modern smartwatch for everyday use.',
     longDescription: 'A stylish smartwatch featuring a modern display and a comfortable wearable design. Suitable for everyday activities and compatible smartphone experiences depending on the device model.',
-    price: '299',
+    price: 299,
     originalPrice: '349',
     image: AppAssets.clock,
     images: [
@@ -113,13 +118,15 @@ const List<ProductItemModel> products = [
 
   // 4. Wireless Earbuds
   ProductItemModel(
+    id: '4',
+
     title: 'AirPods Wireless Pro',
     category: 'WIRELESS AUDIO',
     tag: 'COMPACT - PREMIUM SOUND',
     rating: '4.7 (860)',
     description: 'Compact wireless earbuds for everyday listening.',
     longDescription: 'Compact wireless earbuds with a portable charging case and a lightweight design suitable for daily use, commuting, and listening to music.',
-    price: '129',
+    price: 129,
     originalPrice: '159',
     image: AppAssets.airbuds,
     images: [
@@ -153,13 +160,15 @@ const List<ProductItemModel> products = [
 
   // 5. Wireless Mouse
   ProductItemModel(
+    id: '5',
+
     title: 'Nova Wireless Mouse',
     category: 'COMPUTER ACCESSORIES',
     tag: 'ERGONOMIC - WIRELESS',
     rating: '4.6 (420)',
     description: 'A comfortable mouse for work and everyday browsing.',
     longDescription: 'A practical computer mouse with a clean design for office work, studying, and everyday desktop use.',
-    price: '29',
+    price: 29,
     originalPrice: '39',
     image: AppAssets.mouse,
     images: [
@@ -182,13 +191,15 @@ const List<ProductItemModel> products = [
 
   // 6. Digital Camera
   ProductItemModel(
+    id: '6',
+
     title: 'Vision Digital Camera',
     category: 'CAMERA & PHOTOGRAPHY',
     tag: 'PORTABLE - DIGITAL',
     rating: '4.8 (560)',
     description: 'A camera for photography and content creation.',
     longDescription: 'A dedicated digital camera for photography, travel, and creative projects. A suitable choice for users who prefer a camera for capturing photos and videos.',
-    price: '499',
+    price: 499,
     originalPrice: '599',
     image: AppAssets.camera,
     images: [
@@ -218,13 +229,15 @@ const List<ProductItemModel> products = [
 
   // 7. Laptop
   ProductItemModel(
+    id: '7',
+
     title: 'ProBook Laptop',
     category: 'COMPUTERS & LAPTOPS',
     tag: 'PRODUCTIVITY - PORTABLE',
     rating: '4.8 (720)',
     description: 'A laptop for productivity, studying, and everyday work.',
     longDescription: 'A versatile laptop designed for studying, office tasks, browsing, and entertainment. Its portable form factor makes it suitable for work at home or on the go.',
-    price: '899',
+    price: 899,
     originalPrice: '999',
     image: AppAssets.laptop,
     images: [
@@ -245,13 +258,15 @@ const List<ProductItemModel> products = [
 
   // 8. Tablet
   ProductItemModel(
+    id: '8',
+
     title: 'Nova iPad Tablet',
     category: 'TABLETS & MOBILE TECH',
     tag: 'PORTABLE - TOUCH DISPLAY',
     rating: '4.7 (680)',
     description: 'A tablet for browsing, entertainment, and productivity.',
     longDescription: 'A versatile tablet suitable for reading, browsing, entertainment, and productivity. Its portable form factor makes it useful for work and leisure.',
-    price: '399',
+    price: 399,
     originalPrice: '449',
     image: AppAssets.ipad,
     images: [AppAssets.ipad, AppAssets.ipad2, AppAssets.ipad3, AppAssets.ipad4],
@@ -273,13 +288,15 @@ const List<ProductItemModel> products = [
 
   // 9. Smartphone
   ProductItemModel(
+    id: '9',
+
     title: 'Nova Smartphone',
     category: 'MOBILE PHONES',
     tag: 'SMART - PORTABLE',
     rating: '4.8 (950)',
     description: 'A modern smartphone for everyday communication.',
     longDescription: 'A smartphone for everyday communication, browsing, entertainment, and mobile applications. The design suits users who need a portable device for daily activities.',
-    price: '599',
+    price: 599,
     originalPrice: '699',
     image: AppAssets.phone,
     images: [
@@ -303,13 +320,15 @@ const List<ProductItemModel> products = [
 
   // 10. Microphone
   ProductItemModel(
+    id: '10',
+
     title: 'Studio USB Microphone',
     category: 'AUDIO & RECORDING',
     tag: 'DESKTOP - CONTENT CREATION',
     rating: '4.7 (390)',
     description: 'A desktop microphone for calls and content creation.',
     longDescription: 'A desktop microphone designed for recording, online meetings, streaming setups, and content creation. Its dedicated form factor suits desktop audio workflows.',
-    price: '89',
+    price: 89,
     originalPrice: '119',
     image: AppAssets.microphone,
     images: [
@@ -338,13 +357,15 @@ const List<ProductItemModel> products = [
 
   // 11. Power Bank
   ProductItemModel(
+    id: '11',
+
     title: 'PowerBank Portable',
     category: 'MOBILE ACCESSORIES',
     tag: 'PORTABLE - ON THE GO',
     rating: '4.7 (510)',
     description: 'A portable power bank for charging devices on the go.',
     longDescription: 'A portable charging accessory for mobile devices during travel, commuting, and everyday activities. Check the actual product specifications for its capacity and charging speed.',
-    price: '49',
+    price: 49,
     originalPrice: '69',
     image: AppAssets.powerBank,
     images: [

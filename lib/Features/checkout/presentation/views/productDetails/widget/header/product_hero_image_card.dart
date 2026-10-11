@@ -14,7 +14,14 @@ class ProductHeroImageCard extends StatefulWidget {
 
 class _ProductHeroImageCardState extends State<ProductHeroImageCard> {
   int _currentImageIndex = 0;
-  PageController pageControler = PageController();
+  final PageController pageControler = PageController();
+
+  @override
+  void dispose() {
+    pageControler.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -39,12 +46,12 @@ class _ProductHeroImageCardState extends State<ProductHeroImageCard> {
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: ClipRRect(
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-
+                      borderRadius: const BorderRadius.all(Radius.circular(15)),
                       child: SizedBox.expand(
                         child: Image.asset(
                           widget.images[index],
                           fit: BoxFit.fill,
+                          cacheWidth: 800,
                           errorBuilder: (context, error, stackTrace) {
                             return const Icon(
                               Icons.image_outlined,
@@ -64,7 +71,7 @@ class _ProductHeroImageCardState extends State<ProductHeroImageCard> {
             widget: widget,
             currentImageIndex: _currentImageIndex,
           ),
-          Gap(10),
+          const Gap(10),
         ],
       ),
     );

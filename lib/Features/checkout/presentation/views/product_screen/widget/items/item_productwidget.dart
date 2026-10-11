@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:payment_method/Features/checkout/data/models/cart_item_model.dart';
 import 'package:payment_method/Features/checkout/data/models/product_item_model.dart';
 import 'package:payment_method/Features/checkout/presentation/views/product_screen/widget/items/item_product_counter_widget.dart';
 import 'package:payment_method/Features/checkout/presentation/views/product_screen/widget/tabletWidget/product_image_thumbnail_tablet.dart';
@@ -65,7 +66,14 @@ class ItemProductwidget extends StatelessWidget {
         ),
         const Gap(14),
         // Quantity Selector Bar
-        ItemProductCounterWidget(quantity: product.quantity),
+        ItemProductCounterWidget(
+          cartItem: CartItemModel(
+            productId: product.id,
+            name: product.title,
+            price: product.price,
+            imageUrl: product.image,
+          ),
+        ),
       ],
     );
   }

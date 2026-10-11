@@ -7,20 +7,29 @@ import 'package:payment_method/Features/checkout/presentation/views/cart_screen/
 import 'package:payment_method/Features/checkout/presentation/views/cart_screen/widget/body/list_items_cart.dart';
 
 class CartItems extends StatelessWidget {
-  const CartItems({super.key, required this.cartItems});
+  const CartItems({
+    super.key,
+    required this.cartItems,
+    this.totalCount,
+    this.subtotal,
+  });
 
   final List<CartItemModel> cartItems;
+  final int? totalCount;
+  final double? subtotal;
 
   @override
   Widget build(BuildContext context) {
-    final double computedSubtotal = cartItems.fold(
-      0.0,
-      (sum, item) => sum + (item.price * item.quantity),
-    );
-    final int computedCount = cartItems.fold(
-      0,
-      (sum, item) => sum + item.quantity,
-    );
+    final double computedSubtotal = subtotal ??
+        cartItems.fold(
+          0.0,
+          (sum, item) => sum + (item.price * item.quantity),
+        );
+    final int computedCount = totalCount ??
+        cartItems.fold(
+          0,
+          (sum, item) => sum + item.quantity,
+        );
 
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),

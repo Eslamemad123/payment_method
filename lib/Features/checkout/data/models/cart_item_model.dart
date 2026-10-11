@@ -1,13 +1,25 @@
 class CartItemModel {
-  final String title;
+  final String productId;
+  final String name;
   final double price;
-  final String image;
-  int quantity;
+  final String imageUrl;
+  final int quantity;
 
-  CartItemModel({
-    required this.title,
+  const CartItemModel({
+    required this.productId,
+    required this.name,
     required this.price,
-    required this.image,
-    required this.quantity,
+    required this.imageUrl,
+    this.quantity = 1,
   });
+
+  double get total => price * quantity;
+
+  CartItemModel copyWith({int? quantity}) => CartItemModel(
+    productId: productId,
+    name: name,
+    price: price,
+    imageUrl: imageUrl,
+    quantity: quantity ?? this.quantity,
+  );
 }

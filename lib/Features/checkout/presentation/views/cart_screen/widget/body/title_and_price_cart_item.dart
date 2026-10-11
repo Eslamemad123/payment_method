@@ -3,7 +3,7 @@ import 'package:gap/gap.dart';
 import 'package:payment_method/Features/checkout/data/models/cart_item_model.dart';
 
 class TitleAndPriceCartItem extends StatelessWidget {
-  const new({super.key, required this.item});
+  const TitleAndPriceCartItem({super.key, required this.item});
 
   final CartItemModel item;
 
@@ -15,7 +15,7 @@ class TitleAndPriceCartItem extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            item.title,
+            item.name,
             style: const TextStyle(
               fontSize: 14.5,
               fontWeight: FontWeight.w700,

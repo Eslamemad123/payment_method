@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-
-import '../../productDetails/widget/QuantityAndPayment/add_sub_items_count.dart';
+import 'package:payment_method/Features/checkout/data/models/cart_item_model.dart';
+import 'package:payment_method/Features/checkout/presentation/views/cart_screen/cubit/cart_cubit.dart';
+import 'package:payment_method/Features/checkout/presentation/views/productDetails/widget/QuantityAndPayment/qunatity.dart';
 
 class CounteritemCart extends StatelessWidget {
-  const new({
-    super.key,
-    required this.onDecrease,
-    required this.onIncrease,
-    required this.onRemove,
-  });
+  final CartItemModel cartItem;
 
-  final VoidCallback onDecrease;
-  final VoidCallback onIncrease;
-  final VoidCallback onRemove;
+  const CounteritemCart({super.key, required this.cartItem});
 
   @override
   Widget build(BuildContext context) {
@@ -29,13 +24,10 @@ class CounteritemCart extends StatelessWidget {
             border: Border.all(color: const Color(0xFFE2E8F0), width: 1),
           ),
           padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-          child: AddSubItemsCount(
+          child: CartQuantityControl(
             colorSub: Colors.white,
-            coloradd: Colors.deepPurple,
-            size: 18,
-            onDecrement: onDecrease,
-            onIncrement: onIncrease,
-            quantity: 2,
+            coloradd: const Color(0xFF4338CA),
+            item: cartItem,
           ),
         ),
         const Gap(8),
@@ -44,7 +36,9 @@ class CounteritemCart extends StatelessWidget {
         Material(
           color: Colors.transparent,
           child: InkWell(
-            onTap: onRemove,
+            onTap: () {
+              context.read<CartCubit>().removeItem(cartItem.productId);
+            },
             borderRadius: BorderRadius.circular(6),
             child: const Padding(
               padding: EdgeInsets.symmetric(horizontal: 4, vertical: 2),

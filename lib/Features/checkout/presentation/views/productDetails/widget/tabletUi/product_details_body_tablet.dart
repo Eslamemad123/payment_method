@@ -7,7 +7,7 @@ import 'leftSide/product_details_body_tablet_left_screen.dart';
 import 'rightSide/product_details_body_tablet_right_screen.dart';
 
 class ProductDetailsBodyTablet extends StatelessWidget {
-  const new({super.key, required this.product});
+  const ProductDetailsBodyTablet({super.key, required this.product});
 
   final ProductItemModel product;
 

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:payment_method/Features/checkout/presentation/views/cart_screen/cubit/cart_cubit.dart';
+import 'package:payment_method/Features/checkout/presentation/views/cart_screen/cubit/cart_state.dart';
 
 import 'cart_numbet_item_header.dart';
 import '../tabletWidget/header_tablet_category.dart';
@@ -21,7 +24,14 @@ class HeaderProuductsMobaileScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       child: Row(
         children: [
-          CartNumbetItemHeader(numberItem: 6, onTap: onCartTap),
+          BlocBuilder<CartCubit, CartState>(
+            builder: (context, state) {
+              return CartNumbetItemHeader(
+                numberItem: state.itemsCount,
+                onTap: onCartTap,
+              );
+            },
+          ),
           const Gap(12),
           Container(height: 18, width: 1.2, color: const Color(0xFFCBD5E1)),
           const Gap(12),

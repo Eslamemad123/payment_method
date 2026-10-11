@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:payment_method/Features/checkout/presentation/views/productDetails/widget/body/product_price_row.dart';
 
 class ProductTabletPriceCard extends StatelessWidget {
-  final String price;
+  final double price;
   final String originalPrice;
 
   const ProductTabletPriceCard({

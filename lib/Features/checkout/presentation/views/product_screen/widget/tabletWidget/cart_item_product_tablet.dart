@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:payment_method/Features/checkout/data/models/cart_item_model.dart';
 import 'package:payment_method/Features/checkout/presentation/views/product_screen/widget/items/item_product_counter_widget.dart';
 import 'package:payment_method/Features/checkout/presentation/views/product_screen/widget/tabletWidget/product_image_thumbnail_tablet.dart';
 import 'package:payment_method/core/const/products_model_list.dart';
@@ -17,22 +18,6 @@ class CartItemProductTablet extends StatefulWidget {
 }
 
 class _CartItemProductTabletState extends State<CartItemProductTablet> {
-  late int _quantity;
-
-  @override
-  void initState() {
-    super.initState();
-    _quantity = products[widget.index].quantity;
-  }
-
-  @override
-  void didUpdateWidget(covariant CartItemProductTablet oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.index != widget.index) {
-      _quantity = products[widget.index].quantity;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     final product = products[widget.index];
@@ -73,9 +58,12 @@ class _CartItemProductTabletState extends State<CartItemProductTablet> {
           ),
           const Gap(10),
           ItemProductCounterWidget(
-            quantity: _quantity,
-            onIncrement: () {},
-            onDecrement: () {},
+            cartItem: CartItemModel(
+              productId: product.id,
+              name: product.title,
+              price: product.price,
+              imageUrl: product.image,
+            ),
           ),
         ],
       ),

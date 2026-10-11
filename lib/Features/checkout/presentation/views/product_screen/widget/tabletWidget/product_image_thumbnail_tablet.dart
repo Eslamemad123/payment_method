@@ -43,6 +43,12 @@ class ProductImageThumbnail extends StatelessWidget {
               child: Image.asset(
                 imagePath,
                 fit: fit,
+                cacheWidth: effectiveWidth != null
+                    ? (effectiveWidth * 2.5).round()
+                    : 350,
+                cacheHeight: effectiveHeight != null
+                    ? (effectiveHeight * 2.5).round()
+                    : null,
                 errorBuilder: (context, error, stackTrace) {
                   return Container(
                     color: const Color(0xFFF1F5F9),

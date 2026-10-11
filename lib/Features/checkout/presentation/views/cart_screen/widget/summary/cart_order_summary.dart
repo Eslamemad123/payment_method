@@ -33,7 +33,7 @@ class CartOrderSummary extends StatelessWidget {
           // Subtotal Row
           SumeryCartItemsTitles(
             title: 'Sub Total',
-            subtitle: '\$${subtotal.toString()}',
+            subtitle: '\$${subtotal.toStringAsFixed(2)}',
           ),
           const Gap(8),
           SumeryCartItemsTitles(
@@ -48,13 +48,13 @@ class CartOrderSummary extends StatelessWidget {
           const Gap(12),
           SumeryCartItemsTitles(
             title: 'Estimated Total',
-            subtitle: '\$${subtotal.toString()}',
+            subtitle: '\$${subtotal.toStringAsFixed(2)}',
             color: Color(0xFF4338CA),
             fontSize: 16,
           ),
 
           const Gap(16),
-          ProductBuyNowButton(subtotal: 50),
+          ProductBuyNowButton(subtotal: subtotal.round()),
           ProductDetailsMethodSupportedPayment(),
         ],
       ),

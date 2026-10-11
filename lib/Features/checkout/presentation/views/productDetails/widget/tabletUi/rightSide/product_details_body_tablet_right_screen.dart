@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:payment_method/Features/checkout/data/models/cart_item_model.dart';
 import 'package:payment_method/Features/checkout/data/models/product_item_model.dart';
 import 'package:payment_method/Features/checkout/presentation/views/productDetails/widget/body/product_technical_highlights.dart';
 import 'package:payment_method/Features/checkout/presentation/views/productDetails/widget/tabletUi/rightSide/product_details_category_and_code_item_tablet.dart';
@@ -9,7 +10,7 @@ import 'package:payment_method/Features/checkout/presentation/views/productDetai
 import 'package:payment_method/Features/checkout/presentation/views/productDetails/widget/tabletUi/rightSide/product_tablet_price_card.dart';
 
 class ProductDetailsBodyTabletRightScreen extends StatelessWidget {
-  const new({super.key, required this.product});
+  const ProductDetailsBodyTabletRightScreen({super.key, required this.product});
 
   final ProductItemModel product;
 
@@ -51,13 +52,15 @@ class ProductDetailsBodyTabletRightScreen extends StatelessWidget {
         ProductTechnicalHighlights(highlights: product.highlights),
         const Gap(20),
         ProductQuantitySelector(
-          quantity: 5,
-          subtotal: 2,
-          onIncrement: () {},
-          onDecrement: () {},
+          cartItem: CartItemModel(
+            productId: product.id,
+            name: product.title,
+            price: product.price,
+            imageUrl: product.image,
+          ),
         ),
         const Gap(20),
-        const ProductTabletActionButtons(subtotal: 5),
+        ProductTabletActionButtons(subtotal: product.price.round()),
         const Gap(24),
       ],
     );

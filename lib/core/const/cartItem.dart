@@ -3,21 +3,24 @@ import 'package:payment_method/core/const/app_assets.dart';
 
 final List<CartItemModel> cartItems = [
   CartItemModel(
-    title: 'Horizon Wireless ANC',
+    name: 'Horizon Wireless ANC',
     price: 249.0,
-    image: AppAssets.headPhone,
+    imageUrl: AppAssets.headPhone,
     quantity: 2,
+    productId: '2',
   ),
   CartItemModel(
-    title: 'Nova Mechanical Keyboard',
+    name: 'Nova Mechanical Keyboard',
     price: 139.0,
-    image: AppAssets.keyboard,
+    imageUrl: AppAssets.keyboard,
     quantity: 1,
+    productId: '1',
   ),
   CartItemModel(
-    title: 'Aura Smartwatch Pro',
+    name: 'Aura Smartwatch Pro',
     price: 299.0,
-    image: AppAssets.clock,
+    imageUrl: AppAssets.clock,
     quantity: 3,
+    productId: '3',
   ),
 ];

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:payment_method/Features/checkout/data/models/cart_item_model.dart';
 import 'package:payment_method/Features/checkout/data/models/product_item_model.dart';
 import 'package:payment_method/Features/checkout/presentation/views/productDetails/widget/QuantityAndPayment/product_details_method_supported_payment.dart';
 import 'package:payment_method/Features/checkout/presentation/views/productDetails/widget/body/product_technical_highlights.dart';
@@ -72,15 +73,17 @@ class _ProductDetailsViewBodyState extends State<ProductDetailsViewBody> {
                 ProductTechnicalHighlights(highlights: product.highlights),
                 const Gap(20),
                 ProductQuantitySelector(
-                  quantity: quantity,
-                  subtotal: 2,
-                  onIncrement: () {},
-                  onDecrement: () {},
+                  cartItem: CartItemModel(
+                    productId: product.id,
+                    name: product.title,
+                    price: product.price,
+                    imageUrl: product.image,
+                  ),
                 ),
                 const Gap(14),
                 const ProductWarrantyRow(),
                 const Gap(24),
-                ProductBuyNowButton(subtotal: 3),
+                ProductBuyNowButton(subtotal: product.price.round()),
                 Gap(12),
                 ProductDetailsMethodSupportedPayment(),
                 const Gap(24),

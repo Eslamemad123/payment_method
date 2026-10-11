@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ThumbnailsRowImagesTabletUi extends StatelessWidget {
-  const new({
+  const ThumbnailsRowImagesTabletUi({
     super.key,
     required this.thumbnailList,
     required this.activeIndex,
@@ -53,6 +53,8 @@ class ThumbnailsRowImagesTabletUi extends StatelessWidget {
                   child: Image.asset(
                     thumbnailList[index],
                     fit: BoxFit.cover,
+                    cacheWidth: 300,
+                    cacheHeight: 300,
                     errorBuilder: (context, error, stackTrace) {
                       return const Center(
                         child: Icon(
