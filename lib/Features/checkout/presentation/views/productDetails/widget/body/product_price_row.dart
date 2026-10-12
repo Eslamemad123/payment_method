@@ -54,12 +54,17 @@ class ProductPriceRow extends StatelessWidget {
                 color: Color(0xFF4338CA),
               ),
               Gap(5),
-              Text(
-                'Free express delivery',
-                style: TextStyle(
-                  fontSize: 11,
-                  fontWeight: FontWeight.w600,
-                  color: Color(0xFF4338CA),
+              Flexible(
+                child: Text(
+                  'Free express delivery',
+                  maxLines: 1,
+                  softWrap: false,
+
+                  style: TextStyle(
+                    fontSize: 11,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xFF4338CA),
+                  ),
                 ),
               ),
             ],

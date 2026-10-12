@@ -29,6 +29,8 @@ class _ProductsScreenDesktopState extends State<ProductsScreenDesktop> {
       color: Colors.white,
       child: LayoutBuilder(
         builder: (context, constraints) {
+          final double width = constraints.maxWidth;
+          final bool compactLayout = width < 1250;
           return Column(
             children: [
               HeaderProuductsMobaileScreen(
@@ -41,24 +43,25 @@ class _ProductsScreenDesktopState extends State<ProductsScreenDesktop> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // Left panel: Cart Items
-                    Expanded(
-                      flex: 4,
-                      child: Container(
-                        color: Colors.white,
-                        child: BlocBuilder<CartCubit, CartState>(
-                          builder: (context, state) {
-                            return state.items.isEmpty
-                                ? const CartEmptyState()
-                                : CartItems(
-                                    cartItems: state.items,
-                                    totalCount: state.itemsCount,
-                                    subtotal: state.subTotal,
-                                  );
-                          },
+                    if (!compactLayout) ...[
+                      Expanded(
+                        flex: 4,
+                        child: Container(
+                          color: Colors.white,
+                          child: BlocBuilder<CartCubit, CartState>(
+                            builder: (context, state) {
+                              return state.items.isEmpty
+                                  ? const CartEmptyState()
+                                  : CartItems(
+                                      cartItems: state.items,
+                                      totalCount: state.itemsCount,
+                                      subtotal: state.subTotal,
+                                    );
+                            },
+                          ),
                         ),
                       ),
-                    ),
-
+                    ],
                     const VerticalDivider(
                       width: 1,
                       thickness: 1,
@@ -67,7 +70,7 @@ class _ProductsScreenDesktopState extends State<ProductsScreenDesktop> {
 
                     // Center panel: Products Catalog
                     Expanded(
-                      flex: 7,
+                      flex: compactLayout ? 6 : 7,
                       child: Container(
                         color: const Color(0xFFF8FAFC),
                         padding: const EdgeInsets.symmetric(
