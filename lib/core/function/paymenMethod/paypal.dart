@@ -33,8 +33,9 @@ void paymentPaypal(
             (route) {
               if (route.settings.name == '/') {
                 return true;
-              } else
+              } else {
                 return false;
+              }
             },
           );
         },

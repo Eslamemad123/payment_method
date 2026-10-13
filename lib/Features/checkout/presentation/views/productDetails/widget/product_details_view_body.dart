@@ -40,7 +40,12 @@ class _ProductDetailsViewBodyState extends State<ProductDetailsViewBody> {
     final description = product.longDescription.isNotEmpty
         ? product.longDescription
         : product.description;
-
+    final CartItemModel cartItem = CartItemModel(
+      productId: product.id,
+      name: product.title,
+      price: product.price,
+      imageUrl: product.image,
+    );
     return Column(
       children: [
         if (widget.showHeader)
@@ -72,18 +77,11 @@ class _ProductDetailsViewBodyState extends State<ProductDetailsViewBody> {
                 const Gap(20),
                 ProductTechnicalHighlights(highlights: product.highlights),
                 const Gap(20),
-                ProductQuantitySelector(
-                  cartItem: CartItemModel(
-                    productId: product.id,
-                    name: product.title,
-                    price: product.price,
-                    imageUrl: product.image,
-                  ),
-                ),
+                ProductQuantitySelector(cartItem: cartItem),
                 const Gap(14),
                 const ProductWarrantyRow(),
                 const Gap(24),
-                ProductBuyNowButton(subtotal: product.price.round()),
+                ProductBuyNowButton(cartItem: cartItem),
                 Gap(12),
                 ProductDetailsMethodSupportedPayment(),
                 const Gap(24),

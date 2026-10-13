@@ -1,6 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:payment_method/Features/checkout/presentation/manger/cubit/stripe_payment_cubit.dart';
+import 'package:payment_method/Features/checkout/presentation/views/cart_screen/cubit/cart_cubit.dart';
+import 'package:payment_method/Features/checkout/presentation/views/cart_screen/cubit/cart_state.dart';
 import 'package:payment_method/Features/checkout/presentation/views/widgets/thank_you_view.dart';
 import 'package:payment_method/core/function/getTransctionPaypal.dart';
 import 'package:payment_method/core/function/paymenMethod/fawry.dart';
@@ -31,29 +35,44 @@ class CustomButtonBlocConsumer extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        return CustomButton(
-          onTap: () {
-            var transctions = getTransctionsData();
-            var num = context.read<StripePaymentCubit>().paymentMethod;
-            switch (num) {
-              case 0:
-                paymentStripe(context);
-              case 1:
-                paymentPaypal(context, transctions);
-              case 2:
-                paymentPaymob();
-              case 3:
-                paymentPayTaps(context);
-              case 4:
-                paymentFawry();
-              case 5:
-                paymentKashier();
-              case 6:
-                paymentGooglePay();
-            }
+        return BlocBuilder<CartCubit, CartState>(
+          builder: (context, state) {
+            return CustomButton(
+              onTap: () {
+                final cartItems = context.read<CartCubit>().state.items;
+
+                final transctions = getTransctionsData(cartItems);
+
+                log('PAYPAL AMOUNT: ${transctions.amount.toJson()}');
+                log('PAYPAL ITEMS: ${transctions.items.toJson()}');
+                var num = context.read<StripePaymentCubit>().paymentMethod;
+                switch (num) {
+                  case 0:
+                    paymentStripe(
+                      context,
+                      context.read<StripePaymentCubit>().amount,
+                    );
+                  case 1:
+                    paymentPaypal(context, transctions);
+                  case 2:
+                    paymentPaymob();
+                  case 3:
+                    paymentPayTaps(
+                      context,
+                      context.read<StripePaymentCubit>().amount,
+                    );
+                  case 4:
+                    paymentFawry();
+                  case 5:
+                    paymentKashier();
+                  case 6:
+                    paymentGooglePay();
+                }
+              },
+              text: 'Continue',
+              isLoading: (state is StripePaymentLoading) ? true : false,
+            );
           },
-          text: 'Continue',
-          isLoading: (state is StripePaymentLoading) ? true : false,
         );
       },
     );

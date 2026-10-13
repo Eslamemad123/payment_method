@@ -20,16 +20,11 @@ class CartItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double computedSubtotal = subtotal ??
-        cartItems.fold(
-          0.0,
-          (sum, item) => sum + (item.price * item.quantity),
-        );
-    final int computedCount = totalCount ??
-        cartItems.fold(
-          0,
-          (sum, item) => sum + item.quantity,
-        );
+    final double computedSubtotal =
+        subtotal ??
+        cartItems.fold(0.0, (sum, item) => sum + (item.price * item.quantity));
+    final int computedCount =
+        totalCount ?? cartItems.fold(0, (sum, item) => sum + item.quantity);
 
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
@@ -43,7 +38,7 @@ class CartItems extends StatelessWidget {
           const Gap(16),
           ListItemsCart(cartItems: cartItems),
           const Gap(8),
-          CartOrderSummary(subtotal: computedSubtotal),
+          CartOrderSummary(subtotal: computedSubtotal, cartItem: cartItems[0]),
           const Gap(24),
         ],
       ),

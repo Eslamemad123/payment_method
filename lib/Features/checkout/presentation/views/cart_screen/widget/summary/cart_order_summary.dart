@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:payment_method/Features/checkout/data/models/cart_item_model.dart';
 import 'package:payment_method/Features/checkout/presentation/views/productDetails/widget/QuantityAndPayment/product_buy_now_button.dart';
 import 'package:payment_method/Features/checkout/presentation/views/productDetails/widget/QuantityAndPayment/product_details_method_supported_payment.dart';
 
@@ -8,8 +9,14 @@ import 'sumery_cart_items_titles.dart';
 class CartOrderSummary extends StatelessWidget {
   final double subtotal;
   final VoidCallback? onCheckout;
+  final CartItemModel cartItem;
 
-  const CartOrderSummary({super.key, required this.subtotal, this.onCheckout});
+  const CartOrderSummary({
+    super.key,
+    required this.subtotal,
+    required this.cartItem,
+    this.onCheckout,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +61,10 @@ class CartOrderSummary extends StatelessWidget {
           ),
 
           const Gap(16),
-          ProductBuyNowButton(subtotal: subtotal.round()),
+
+          ProductBuyNowButton(subtotal: subtotal.round(), cartItem: cartItem),
+          Gap(10),
+
           ProductDetailsMethodSupportedPayment(),
         ],
       ),

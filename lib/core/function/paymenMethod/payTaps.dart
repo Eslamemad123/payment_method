@@ -8,7 +8,7 @@ import 'package:payment_method/Features/checkout/presentation/views/widgets/than
 import 'package:payment_method/core/utils/api_keys.dart';
 import 'package:flutter_paytabs_bridge/flutter_paytabs_bridge.dart';
 
-void paymentPayTaps(BuildContext context) {
+void paymentPayTaps(BuildContext context, int amount) {
   log('payTaps');
   var billingDetails = new BillingDetails(
     "abdelAzizi",
@@ -20,29 +20,18 @@ void paymentPayTaps(BuildContext context) {
     "ُEG",
     "12345e",
   );
-
-  // var shippingDetails = new ShippingDetails(
-  //   "eslam emad",
-  //   "1@gmail.com",
-  //   "01558060246",
-  //   "address line",
-  //   "EG",
-  //   "city",
-  //   "state",
-  //   "zip code",
-  // );
+  log('mmmm ${amount}');
   var configuration = PaymentSdkConfigurationDetails(
     profileId: ApiKeys.profileIdPayTaps,
     serverKey: ApiKeys.serverKeyPayTaps,
     clientKey: ApiKeys.clientKeyPayTaps,
-    cartId: "1801",
-    cartDescription: "iphone 18 pro max",
+    cartId: 'IOR:20350',
+    cartDescription: 'Payment for products',
     merchantName: "Es1am",
     screentTitle: "Pay with payTaps for app flutter test",
     billingDetails: billingDetails,
-    // shippingDetails: shippingDetails,
-    locale: PaymentSdkLocale.AR, //PaymentSdkLocale.AR, PaymentSdkLocale.FR, PaymentSdkLocale.TR, PaymentSdkLocale.UR or PaymentSdkLocale.DEFAULT.
-    amount: 100,
+    locale: PaymentSdkLocale.EN, //PaymentSdkLocale.AR, PaymentSdkLocale.FR, PaymentSdkLocale.TR, PaymentSdkLocale.UR or PaymentSdkLocale.DEFAULT.
+    amount: amount.toDouble(),
     currencyCode: "EGP",
     merchantCountryCode: "EG",
   );

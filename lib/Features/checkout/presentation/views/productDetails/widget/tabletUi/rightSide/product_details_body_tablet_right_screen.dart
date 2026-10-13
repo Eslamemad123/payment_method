@@ -16,6 +16,12 @@ class ProductDetailsBodyTabletRightScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final CartItemModel cartitem = CartItemModel(
+      productId: product.id,
+      name: product.title,
+      price: product.price,
+      imageUrl: product.image,
+    );
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -51,16 +57,12 @@ class ProductDetailsBodyTabletRightScreen extends StatelessWidget {
         const Gap(20),
         ProductTechnicalHighlights(highlights: product.highlights),
         const Gap(20),
-        ProductQuantitySelector(
-          cartItem: CartItemModel(
-            productId: product.id,
-            name: product.title,
-            price: product.price,
-            imageUrl: product.image,
-          ),
-        ),
+        ProductQuantitySelector(cartItem: cartitem),
         const Gap(20),
-        ProductTabletActionButtons(subtotal: product.price.round()),
+        ProductTabletActionButtons(
+          subtotal: product.price.round(),
+          cartItem: cartitem,
+        ),
         const Gap(24),
       ],
     );
