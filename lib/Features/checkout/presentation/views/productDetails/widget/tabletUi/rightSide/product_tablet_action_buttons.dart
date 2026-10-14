@@ -27,7 +27,7 @@ class ProductTabletActionButtons extends StatelessWidget {
             // Buy Now Button (Deep Indigo / Purple)
             Expanded(
               flex: 5,
-              child: ProductBuyNowButton(subtotal: 3, cartItem: cartItem),
+              child: ProductBuyNowButton(cartItem: cartItem),
             ),
             const Gap(14),
             ProductDetailsAddToCartButton(onAddToCart: onAddToCart),

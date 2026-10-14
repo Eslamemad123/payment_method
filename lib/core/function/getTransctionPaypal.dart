@@ -6,18 +6,21 @@ import 'package:payment_method/Features/checkout/data/models/items_order_paypal_
 
 ({AmountPaypalModel amount, ItemsOrderPaypalModel items}) getTransctionsData(
   List<CartItemModel> cartItems, {
+  num? totalAmount,
   double shipping = 0.0,
   num shippingDiscount = 0,
   String currency = 'USD',
 }) {
-  // حساب subtotal تلقائيًا من المنتجات والكميات
+  // حساب subtotal تلقائيًا من مجموع حاصل ضرب سعر كل منتج في كميته
   final double subtotal = cartItems.fold<double>(
     0.0,
     (sum, item) => sum + item.total,
   );
 
   // حساب total ليتوافق مع مجموع المنتجات والشحن والخصومات
-  final double total = subtotal + shipping - shippingDiscount;
+  final double total = totalAmount != null && shipping == 0 && shippingDiscount == 0 && (totalAmount.toDouble() - subtotal).abs() < 1
+      ? totalAmount.toDouble()
+      : (subtotal + shipping - shippingDiscount);
 
   final detailsAmount = Details(
     subtotal: subtotal.toStringAsFixed(2),
@@ -44,4 +47,21 @@ import 'package:payment_method/Features/checkout/data/models/items_order_paypal_
   final itemsOrder = ItemsOrderPaypalModel(items: itemsList);
 
   return (amount: amountModel, items: itemsOrder);
+}
+
+/// دالة مساعدة لتجهيز بيانات معاملة PayPal لمنتج واحد فقط
+({AmountPaypalModel amount, ItemsOrderPaypalModel items}) getSingleItemTransactionData(
+  CartItemModel singleItem, {
+  num? totalAmount,
+  double shipping = 0.0,
+  num shippingDiscount = 0,
+  String currency = 'USD',
+}) {
+  return getTransctionsData(
+    [singleItem],
+    totalAmount: totalAmount,
+    shipping: shipping,
+    shippingDiscount: shippingDiscount,
+    currency: currency,
+  );
 }

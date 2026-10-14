@@ -20,7 +20,6 @@ void paymentPayTaps(BuildContext context, int amount) {
     "ُEG",
     "12345e",
   );
-  log('mmmm ${amount}');
   var configuration = PaymentSdkConfigurationDetails(
     profileId: ApiKeys.profileIdPayTaps,
     serverKey: ApiKeys.serverKeyPayTaps,

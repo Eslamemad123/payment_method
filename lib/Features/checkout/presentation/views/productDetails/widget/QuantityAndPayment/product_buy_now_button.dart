@@ -23,7 +23,10 @@ class ProductBuyNowButton extends StatelessWidget {
           return BlocBuilder<CartCubit, CartState>(
             builder: (context, state) {
               final qty = state.quantityOf(cartItem.productId);
-              final itemSubtotal = qty * cartItem.price;
+              final buyQty = qty > 0
+                  ? qty
+                  : (cartItem.quantity > 0 ? cartItem.quantity : 1);
+              final itemSubtotal = buyQty * cartItem.price;
               final amount = subtotal ?? itemSubtotal.toInt();
 
               return SizedBox(
@@ -39,7 +42,12 @@ class ProductBuyNowButton extends StatelessWidget {
                     elevation: 0,
                   ),
                   onPressed: () {
+                    final isSingle = subtotal == null;
+                    final singleProduct = cartItem.copyWith(quantity: buyQty);
+                    final checkoutItems = isSingle ? [singleProduct] : null;
+
                     context.read<StripePaymentCubit>().amount = amount;
+                    context.read<StripePaymentCubit>().items = checkoutItems;
 
                     showModalBottomSheet(
                       context: context,
@@ -53,7 +61,7 @@ class ProductBuyNowButton extends StatelessWidget {
                       builder: (sheetContext) {
                         return BlocProvider.value(
                           value: context.read<StripePaymentCubit>(),
-                          child: const PaymentMethodsBottomSheet(),
+                          child: PaymentMethodsBottomSheet(),
                         );
                       },
                     );

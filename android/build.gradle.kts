@@ -5,6 +5,7 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        maven { url = uri("https://jitpack.io") }
     }
 }
 
@@ -37,7 +38,7 @@ subprojects {
         }
     }
 
-    // يوحّد الـ Kotlin JVM target على 17 لكل البلجنز
+    // يوحّد الـ Kotlin JVM target على 21 لكل البلجنز
     tasks.withType<KotlinCompile>().configureEach {
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_21)

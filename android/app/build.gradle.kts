@@ -8,7 +8,9 @@ android {
     namespace = "com.example.payment_method"
     compileSdk = 36
     ndkVersion = flutter.ndkVersion
-
+buildFeatures {
+        dataBinding = true
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21

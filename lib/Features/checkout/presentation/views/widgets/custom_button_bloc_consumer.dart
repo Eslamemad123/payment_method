@@ -1,7 +1,6 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:payment_method/Features/checkout/data/models/cart_item_model.dart';
 import 'package:payment_method/Features/checkout/presentation/manger/cubit/stripe_payment_cubit.dart';
 import 'package:payment_method/Features/checkout/presentation/views/cart_screen/cubit/cart_cubit.dart';
 import 'package:payment_method/Features/checkout/presentation/views/cart_screen/cubit/cart_state.dart';
@@ -18,7 +17,9 @@ import 'package:payment_method/core/function/paymenMethod/stripe.dart';
 import 'package:payment_method/core/widgets/custom_button.dart';
 
 class CustomButtonBlocConsumer extends StatelessWidget {
-  const new({super.key});
+  final List<CartItemModel>? items;
+
+  const CustomButtonBlocConsumer({super.key, this.items});
 
   @override
   Widget build(BuildContext context) {
@@ -39,12 +40,16 @@ class CustomButtonBlocConsumer extends StatelessWidget {
           builder: (context, state) {
             return CustomButton(
               onTap: () {
-                final cartItems = context.read<CartCubit>().state.items;
+                final selectedItems =
+                    items ??
+                    context.read<StripePaymentCubit>().items ??
+                    context.read<CartCubit>().state.items;
 
-                final transctions = getTransctionsData(cartItems);
+                final transctions = getTransctionsData(
+                  selectedItems,
+                  totalAmount: context.read<StripePaymentCubit>().amount,
+                );
 
-                log('PAYPAL AMOUNT: ${transctions.amount.toJson()}');
-                log('PAYPAL ITEMS: ${transctions.items.toJson()}');
                 var num = context.read<StripePaymentCubit>().paymentMethod;
                 switch (num) {
                   case 0:
@@ -55,7 +60,10 @@ class CustomButtonBlocConsumer extends StatelessWidget {
                   case 1:
                     paymentPaypal(context, transctions);
                   case 2:
-                    paymentPaymob();
+                    PaymentPaymob(
+                      context.read<StripePaymentCubit>().amount,
+                      selectedItems,
+                    );
                   case 3:
                     paymentPayTaps(
                       context,
