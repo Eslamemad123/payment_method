@@ -21,23 +21,23 @@ class CardInfoWidget extends StatelessWidget {
             TextSpan(
               children: [
                 const TextSpan(
-                  text: 'Credit Card ',
+                  text: 'Credit Card\n',
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 18,
                     fontFamily: 'Inter',
                     fontWeight: FontWeight.w400,
-                    height: 0,
+                    height: 1.2,
                   ),
                 ),
                 TextSpan(
                   text: 'Mastercard **78',
                   style: TextStyle(
-                    color: Colors.black.withOpacity(0.699999988079071),
+                    color: Colors.black.withValues(alpha: 0.7),
                     fontSize: 16,
                     fontFamily: 'Inter',
                     fontWeight: FontWeight.w400,
-                    height: 0,
+                    height: 1.2,
                   ),
                 ),
               ],

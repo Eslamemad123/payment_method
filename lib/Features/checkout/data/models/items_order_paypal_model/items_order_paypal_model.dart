@@ -1,7 +1,7 @@
-import 'item.dart';
+import 'package:payment_method/Features/checkout/data/models/items_order_paypal_model/item.dart';
 
 class ItemsOrderPaypalModel {
-  List<ItemOrder>? items;
+  final List<ItemOrder>? items;
 
   ItemsOrderPaypalModel({this.items});
 
@@ -14,6 +14,6 @@ class ItemsOrderPaypalModel {
   }
 
   Map<String, dynamic> toJson() => {
-    if (items != null) 'items': items?.map((e) => e.toJson()).toList(),
+    if (items != null) 'items': items!.map((e) => e.toJson()).toList(),
   };
 }

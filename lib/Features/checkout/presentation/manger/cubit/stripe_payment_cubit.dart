@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:payment_method/Features/checkout/data/models/cart_item_model.dart';
 import 'package:payment_method/Features/checkout/data/models/payment_input_model.dart';
 import 'package:payment_method/Features/checkout/data/repo/repo.dart';
 
@@ -9,6 +10,9 @@ class StripePaymentCubit extends Cubit<StripePaymentState> {
   StripePaymentCubit(this.checkPayment) : super(StripePaymentInitial());
   final CheckPaymentrepo checkPayment;
   int paymentMethod = 0;
+  int amount = 0;
+  List<CartItemModel>? items;
+
   Future makePayment({
     required PaymentIntentInputModel paymentIntentInputModel,
   }) async {
