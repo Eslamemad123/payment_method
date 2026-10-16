@@ -18,7 +18,11 @@ import 'package:payment_method/Features/checkout/data/models/items_order_paypal_
   );
 
   // حساب total ليتوافق مع مجموع المنتجات والشحن والخصومات
-  final double total = totalAmount != null && shipping == 0 && shippingDiscount == 0 && (totalAmount.toDouble() - subtotal).abs() < 1
+  final double total =
+      totalAmount != null &&
+          shipping == 0 &&
+          shippingDiscount == 0 &&
+          (totalAmount.toDouble() - subtotal).abs() < 1
       ? totalAmount.toDouble()
       : (subtotal + shipping - shippingDiscount);
 
@@ -50,7 +54,8 @@ import 'package:payment_method/Features/checkout/data/models/items_order_paypal_
 }
 
 /// دالة مساعدة لتجهيز بيانات معاملة PayPal لمنتج واحد فقط
-({AmountPaypalModel amount, ItemsOrderPaypalModel items}) getSingleItemTransactionData(
+({AmountPaypalModel amount, ItemsOrderPaypalModel items})
+getSingleItemTransactionData(
   CartItemModel singleItem, {
   num? totalAmount,
   double shipping = 0.0,

@@ -4,10 +4,7 @@ import 'package:gap/gap.dart';
 class ProductDetailsSubHeader extends StatefulWidget {
   final bool showBackButton;
 
-  const ProductDetailsSubHeader({
-    super.key,
-    this.showBackButton = true,
-  });
+  const ProductDetailsSubHeader({super.key, this.showBackButton = true});
 
   @override
   State<ProductDetailsSubHeader> createState() =>

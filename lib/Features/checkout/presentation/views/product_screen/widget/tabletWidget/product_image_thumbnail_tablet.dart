@@ -99,4 +99,3 @@ class ProductImageThumbnail extends StatelessWidget {
     );
   }
 }
-

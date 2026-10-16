@@ -5,22 +5,17 @@ class CartNumbetItemHeader extends StatelessWidget {
   final int numberItem;
   final VoidCallback? onTap;
 
-  const CartNumbetItemHeader({
-    super.key,
-    required this.numberItem,
-    this.onTap,
-  });
+  const CartNumbetItemHeader({super.key, required this.numberItem, this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onTap ??
+      onTap:
+          onTap ??
           () {
             Navigator.push(
               context,
-              MaterialPageRoute(
-                builder: (context) => const ShoppingCartView(),
-              ),
+              MaterialPageRoute(builder: (context) => const ShoppingCartView()),
             );
           },
       borderRadius: BorderRadius.circular(12),

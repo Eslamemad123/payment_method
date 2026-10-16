@@ -1,5 +1,5 @@
 import 'dart:developer';
 
 void paymentKashier() {
-  log('Kashier');
+  log('kashier');
 }

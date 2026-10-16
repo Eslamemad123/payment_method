@@ -5,7 +5,7 @@ import 'package:payment_method/core/const/cartItem.dart';
 
 class CartCubit extends Cubit<CartState> {
   CartCubit({List<CartItemModel>? initialItems})
-      : super(CartState(items: initialItems ?? cartItems));
+    : super(CartState(items: initialItems ?? cartItems));
 
   void increment(CartItemModel item) {
     final items = [...state.items];

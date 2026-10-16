@@ -4,10 +4,7 @@ import 'package:gap/gap.dart';
 class CartTitleBar extends StatelessWidget {
   final int totalCount;
 
-  const CartTitleBar({
-    super.key,
-    required this.totalCount,
-  });
+  const CartTitleBar({super.key, required this.totalCount});
 
   @override
   Widget build(BuildContext context) {

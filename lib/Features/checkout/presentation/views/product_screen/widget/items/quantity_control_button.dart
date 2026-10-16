@@ -40,4 +40,3 @@ class QuantityControlButton extends StatelessWidget {
     );
   }
 }
-

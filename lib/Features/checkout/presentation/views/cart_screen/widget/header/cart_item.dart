@@ -20,12 +20,17 @@ class CartItemsDetailsMobail extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const ShoppingCartView()),
+                  MaterialPageRoute(
+                    builder: (context) => const ShoppingCartView(),
+                  ),
                 );
               },
               borderRadius: BorderRadius.circular(16),
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 14,
+                ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
                   color: const Color(0xFFF1F5FD),
@@ -41,7 +46,10 @@ class CartItemsDetailsMobail extends StatelessWidget {
                     const Gap(8),
                     RichText(
                       text: TextSpan(
-                        style: const TextStyle(fontSize: 14, color: Color(0xFF475569)),
+                        style: const TextStyle(
+                          fontSize: 14,
+                          color: Color(0xFF475569),
+                        ),
                         children: [
                           const TextSpan(
                             text: 'Items in Cart: ',
@@ -57,37 +65,37 @@ class CartItemsDetailsMobail extends StatelessWidget {
                         ],
                       ),
                     ),
-                const Spacer(),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Text(
-                      'LIVE SYNC',
-                      style: TextStyle(
-                        color: Color(0xFF4338CA),
-                        fontSize: 12,
-                        fontWeight: FontWeight.w800,
-                        letterSpacing: 0.5,
-                      ),
-                    ),
-                    const Gap(6),
-                    Container(
-                      width: 8,
-                      height: 8,
-                      decoration: const BoxDecoration(
-                        color: Color(0xFF4338CA),
-                        shape: BoxShape.circle,
-                      ),
+                    const Spacer(),
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const Text(
+                          'LIVE SYNC',
+                          style: TextStyle(
+                            color: Color(0xFF4338CA),
+                            fontSize: 12,
+                            fontWeight: FontWeight.w800,
+                            letterSpacing: 0.5,
+                          ),
+                        ),
+                        const Gap(6),
+                        Container(
+                          width: 8,
+                          height: 8,
+                          decoration: const BoxDecoration(
+                            color: Color(0xFF4338CA),
+                            shape: BoxShape.circle,
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
-              ],
+              ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
-  },
-);
   }
 }

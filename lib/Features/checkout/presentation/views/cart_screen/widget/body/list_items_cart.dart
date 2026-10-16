@@ -15,10 +15,7 @@ class ListItemsCart extends StatelessWidget {
       itemCount: cartItems.length,
       itemBuilder: (context, index) {
         final item = cartItems[index];
-        return CartItemCard(
-          key: ValueKey(item.productId),
-          cartItem: item,
-        );
+        return CartItemCard(key: ValueKey(item.productId), cartItem: item);
       },
     );
   }

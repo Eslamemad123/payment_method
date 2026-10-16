@@ -3,10 +3,7 @@ import 'package:flutter/material.dart';
 class ProductDescriptionBox extends StatelessWidget {
   final String description;
 
-  const ProductDescriptionBox({
-    super.key,
-    required this.description,
-  });
+  const ProductDescriptionBox({super.key, required this.description});
 
   @override
   Widget build(BuildContext context) {
