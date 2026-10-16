@@ -1,15 +1,15 @@
 part of 'stripe_payment_cubit.dart';
 
 @immutable
-sealed class StripePaymentState {}
+sealed class PaymentState {}
 
-final class StripePaymentInitial extends StripePaymentState {}
+final class PaymentInitial extends PaymentState {}
 
-final class StripePaymentLoading extends StripePaymentState {}
+final class PaymentLoading extends PaymentState {}
 
-final class StripePaymentSuccess extends StripePaymentState {}
+final class PaymentSuccess extends PaymentState {}
 
-final class StripePaymentFailer extends StripePaymentState {
+final class PaymentFailer extends PaymentState {
   final String errorMessage;
 
   new({required this.errorMessage});

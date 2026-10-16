@@ -23,13 +23,13 @@ class CustomButtonBlocConsumer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<StripePaymentCubit, StripePaymentState>(
+    return BlocConsumer<PaymentCubit, PaymentState>(
       listener: (context, state) {
-        if (state is StripePaymentSuccess) {
+        if (state is PaymentSuccess) {
           Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) => const ThankYouView()),
           );
-        } else if (state is StripePaymentFailer) {
+        } else if (state is PaymentFailer) {
           Navigator.pop(context);
           SnackBar snackBar = SnackBar(content: Text(state.errorMessage));
           ScaffoldMessenger.of(context).showSnackBar(snackBar);
@@ -38,47 +38,39 @@ class CustomButtonBlocConsumer extends StatelessWidget {
       builder: (context, state) {
         return BlocBuilder<CartCubit, CartState>(
           builder: (context, state) {
+            int amount = context.read<PaymentCubit>().amount;
             return CustomButton(
               onTap: () {
                 final selectedItems =
                     items ??
-                    context.read<StripePaymentCubit>().items ??
+                    context.read<PaymentCubit>().items ??
                     context.read<CartCubit>().state.items;
 
                 final transctions = getTransctionsData(
                   selectedItems,
-                  totalAmount: context.read<StripePaymentCubit>().amount,
+                  totalAmount: amount,
                 );
 
-                var num = context.read<StripePaymentCubit>().paymentMethod;
+                var num = context.read<PaymentCubit>().paymentMethod;
                 switch (num) {
                   case 0:
-                    paymentStripe(
-                      context,
-                      context.read<StripePaymentCubit>().amount,
-                    );
+                    paymentStripe(context, amount);
                   case 1:
                     paymentPaypal(context, transctions);
                   case 2:
-                    PaymentPaymob(
-                      context.read<StripePaymentCubit>().amount,
-                      selectedItems,
-                    );
+                    PaymentPaymob(amount, selectedItems);
                   case 3:
-                    paymentPayTaps(
-                      context,
-                      context.read<StripePaymentCubit>().amount,
-                    );
+                    paymentPayTaps(context, amount);
                   case 4:
                     paymentFawry();
                   case 5:
-                    paymentKashier();
+                    paymentKashier(context, amount.toString());
                   case 6:
                     paymentGooglePay();
                 }
               },
               text: 'Continue',
-              isLoading: (state is StripePaymentLoading) ? true : false,
+              isLoading: (state is PaymentLoading) ? true : false,
             );
           },
         );

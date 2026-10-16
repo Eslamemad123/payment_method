@@ -12,6 +12,6 @@ void paymentStripe(BuildContext context, int amount) {
     amount: amount,
     idCustomer: 'cus_VMXVlJunz10SQJ',
   );
-  BlocProvider.of<StripePaymentCubit>(context)
-      .makePayment(paymentIntentInputModel: paymentIntentInputModel);
+  BlocProvider.of<PaymentCubit>(context)
+      .makePaymentStripe(paymentIntentInputModel: paymentIntentInputModel);
 }

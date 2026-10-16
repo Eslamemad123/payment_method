@@ -32,14 +32,13 @@ class _PaymentMethodsListViewState extends State<PaymentMethodsListView> {
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: BlocBuilder<StripePaymentCubit, StripePaymentState>(
+            child: BlocBuilder<PaymentCubit, PaymentState>(
               builder: (context, state) {
                 return GestureDetector(
                   onTap: () {
                     activeIndex = index;
                     setState(() {
-                      context.read<StripePaymentCubit>().paymentMethod =
-                          activeIndex;
+                      context.read<PaymentCubit>().paymentMethod = activeIndex;
                     });
                   },
                   child: PaymentMethodItem(

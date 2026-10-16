@@ -17,7 +17,7 @@ class ProductBuyNowButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => StripePaymentCubit(CheckPaymentImplement()),
+      create: (_) => PaymentCubit(CheckPaymentImplement()),
       child: Builder(
         builder: (context) {
           return BlocBuilder<CartCubit, CartState>(
@@ -46,8 +46,8 @@ class ProductBuyNowButton extends StatelessWidget {
                     final singleProduct = cartItem.copyWith(quantity: buyQty);
                     final checkoutItems = isSingle ? [singleProduct] : null;
 
-                    context.read<StripePaymentCubit>().amount = amount;
-                    context.read<StripePaymentCubit>().items = checkoutItems;
+                    context.read<PaymentCubit>().amount = amount;
+                    context.read<PaymentCubit>().items = checkoutItems;
 
                     showModalBottomSheet(
                       context: context,
@@ -60,7 +60,7 @@ class ProductBuyNowButton extends StatelessWidget {
                       ),
                       builder: (sheetContext) {
                         return BlocProvider.value(
-                          value: context.read<StripePaymentCubit>(),
+                          value: context.read<PaymentCubit>(),
                           child: PaymentMethodsBottomSheet(),
                         );
                       },

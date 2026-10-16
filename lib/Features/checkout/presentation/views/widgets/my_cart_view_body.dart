@@ -35,7 +35,7 @@ class MyCartViewBody extends StatelessWidget {
               //     builder: (context) {
               //       return BlocProvider(
               //         create: (context) =>
-              //             StripePaymentCubit(CheckPaymentImplement()),
+              //             PaymentCubit(CheckPaymentImplement()),
               //         child: const PaymentDetailsView(),
               //       );
               //     },
@@ -49,8 +49,7 @@ class MyCartViewBody extends StatelessWidget {
                 ),
                 builder: (context) {
                   return BlocProvider(
-                    create: (context) =>
-                        StripePaymentCubit(CheckPaymentImplement()),
+                    create: (context) => PaymentCubit(CheckPaymentImplement()),
                     child: const PaymentMethodsBottomSheet(),
                   );
                 },

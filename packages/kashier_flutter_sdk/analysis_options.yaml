@@ -1,0 +1,11 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude:
+    # Local scratch file, untracked and pub-ignored; not part of the SDK.
+    - example/test.dart
+    - build/**
+    - ios/**
+
+# Additional information about this file can be found at
+# https://dart.dev/guides/language/analysis-options

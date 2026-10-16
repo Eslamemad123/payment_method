@@ -1,33 +1,60 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:payment_method/Features/checkout/data/models/cart_item_model.dart';
 import 'package:payment_method/Features/checkout/data/models/payment_input_model.dart';
+import 'package:payment_method/Features/checkout/data/models/payment_intent_kashier_model/payment_intent_kashier_model.dart';
 import 'package:payment_method/Features/checkout/data/repo/repo.dart';
 
 part 'stripe_payment_state.dart';
 
-class StripePaymentCubit extends Cubit<StripePaymentState> {
-  StripePaymentCubit(this.checkPayment) : super(StripePaymentInitial());
+class PaymentCubit extends Cubit<PaymentState> {
+  PaymentCubit(this.checkPayment) : super(PaymentInitial());
   final CheckPaymentrepo checkPayment;
   int paymentMethod = 0;
   int amount = 0;
   List<CartItemModel>? items;
 
-  Future makePayment({
+  Future makePaymentStripe({
     required PaymentIntentInputModel paymentIntentInputModel,
   }) async {
-    emit(StripePaymentLoading());
+    emit(PaymentLoading());
 
-    var data = await checkPayment.mackPayment(
+    var data = await checkPayment.mackPaymentStripe(
       paymentIntentInputModel: paymentIntentInputModel,
     );
 
     data.fold(
       (left) {
-        emit(StripePaymentFailer(errorMessage: left.toString()));
+        emit(PaymentFailer(errorMessage: left.toString()));
       },
       (right) {
-        emit(StripePaymentSuccess());
+        emit(PaymentSuccess());
+      },
+    );
+  }
+
+  Future makePaymentKashier({
+    required PaymentIntentKashierModel paymentIntentKashierModel,
+  }) async {
+    emit(PaymentLoading());
+    log('loading');
+
+    var data = await checkPayment.mackPaymentKashier(
+      paymentIntentKashierModel: paymentIntentKashierModel,
+    );
+
+    data.fold(
+      (left) {
+        log('error');
+
+        emit(PaymentFailer(errorMessage: left.toString()));
+      },
+      (right) {
+        log('suc');
+
+        emit(PaymentSuccess());
       },
     );
   }

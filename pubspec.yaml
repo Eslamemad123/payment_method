@@ -26,11 +26,17 @@ dependencies:
   gap: ^3.0.1
   http: ^1.6.0
   lottie: ^3.6.1
-  kashier_flutter_sdk: ^0.1.4
+  kashier_flutter_sdk: ^0.1.0
+  webview_flutter: ^4.0.0
+  connectivity_plus: ^7.1.1
 dev_dependencies:
   flutter_lints: ^6.0.0
   flutter_test:
     sdk: flutter
+
+dependency_overrides:
+  kashier_flutter_sdk:
+    path: packages/kashier_flutter_sdk
 
 flutter:
 

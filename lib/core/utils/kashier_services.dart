@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:developer';
 
 import 'package:kashier_flutter_sdk/kashier_flutter_sdk.dart';
@@ -17,7 +18,7 @@ class KashierServices {
     final ApiServices apiService = ApiServices();
     var response = await apiService.post(
       headers: {
-        'Authorization': 'Bearer ${ApiKeys.secretKeyKashier}',
+        'Authorization': ApiKeys.secretKeyKashier,
         'api-key': ApiKeys.ApiKeyKashier,
         'Content-Type': 'application/json',
       },
@@ -29,45 +30,62 @@ class KashierServices {
     return sessionIdUrl;
   }
 
-  Future<void> paymentKashier({required String sessionId}) async {
-    log('Starting Kashier payment');
+  Future<KashierPaymentResult> paymentKashier({
+    required String sessionId,
+  }) async {
+    log('Starting Kashier payment with sessionId: $sessionId');
+    final completer = Completer<KashierPaymentResult>();
 
     try {
-      // Initialize Kashier before starting payment
-
       await KashierSDK.startPayment(
         sessionId: sessionId,
         onSuccess: (KashierPaymentResult result) {
-          log('Payment successful');
-          log('Transaction ID: ${result.transactionId}');
-          log('Status: ${result.status}');
+          log('Payment successful: ${result.transactionId}');
+          if (!completer.isCompleted) {
+            completer.complete(result);
+          }
         },
         onPending: (KashierPaymentPending pending) {
-          log('Payment pending');
-          log('Order ID: ${pending.orderId}');
+          log('Payment pending: ${pending.orderId}');
+          if (!completer.isCompleted) {
+            completer.completeError(
+              'Payment pending. Order ID: ${pending.orderId}',
+            );
+          }
         },
         onFailure: (KashierPaymentError error) {
-          if (error.code == KashierErrorCode.userCancelled) {
-            log('User cancelled payment');
-            return;
+          log('Payment failed: ${error.message} (code: ${error.code})');
+          if (!completer.isCompleted) {
+            if (error.code == KashierErrorCode.userCancelled) {
+              completer.completeError('User cancelled payment');
+            } else {
+              completer.completeError(error.message);
+            }
           }
-
-          log('Payment failed: ${error.message}');
-          log('Error code: ${error.code}');
         },
       );
     } catch (e, stackTrace) {
       log('Kashier error: $e', stackTrace: stackTrace);
+      if (!completer.isCompleted) {
+        completer.completeError(e.toString());
+      }
     }
+
+    return completer.future;
   }
 
-  Future makePaymentKashier({
+  Future<KashierPaymentResult> makePaymentKashier({
     required PaymentIntentKashierModel paymentIntentKashierModel,
   }) async {
-    initKashier();
+    await initKashier();
     ResponsePaymentKashierModel sessionId = await startSettionPaymentKashier(
       paymentIntentKashierModel,
     );
-    paymentKashier(sessionId: sessionId.sessionUrl ?? '');
+    final id = sessionId.id;
+    if (id == null || id.isEmpty) {
+      throw Exception('Failed to get Kashier session ID');
+    }
+    log('Kashier Session ID: $id');
+    return await paymentKashier(sessionId: id);
   }
 }
