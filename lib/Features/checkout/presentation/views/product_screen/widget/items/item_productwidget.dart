@@ -50,7 +50,7 @@ class ItemProductwidget extends StatelessWidget {
                       ),
                       const Gap(4),
                       const Text(
-                        'USD',
+                        'EGP',
                         style: TextStyle(
                           fontSize: 11,
                           fontWeight: FontWeight.w600,

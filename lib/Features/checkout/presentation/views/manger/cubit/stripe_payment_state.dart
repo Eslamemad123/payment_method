@@ -1,0 +1,32 @@
+part of 'stripe_payment_cubit.dart';
+
+@immutable
+sealed class PaymentState {}
+
+final class PaymentInitial extends PaymentState {}
+
+final class PaymentLoading extends PaymentState {}
+
+final class PaymentSuccess extends PaymentState {
+  final String amount;
+
+  new({required this.amount});
+}
+
+final class PaymentFailer extends PaymentState {
+  final String errorMessage;
+
+  new({required this.errorMessage});
+}
+
+final class PaymentCancelled extends PaymentState {
+  final String? message;
+
+  new({this.message});
+}
+
+final class PaymentPending extends PaymentState {
+  final String? message;
+
+  new({this.message});
+}

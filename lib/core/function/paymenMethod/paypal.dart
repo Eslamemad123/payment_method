@@ -4,20 +4,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
 import 'package:payment_method/Features/checkout/data/models/amount_paypal_model/amount_paypal_model.dart';
 import 'package:payment_method/Features/checkout/data/models/items_order_paypal_model/items_order_paypal_model.dart';
-import 'package:payment_method/Features/checkout/presentation/views/widgets/thank_you_view.dart';
-import 'package:payment_method/core/utils/api_keys.dart';
+import 'package:payment_method/Features/checkout/presentation/views/paymentSheet/thank_you_view.dart';
+import 'package:payment_method/core/utils/getKeyFromoSubabaise.dart';
 
 void paymentPaypal(
   BuildContext context,
   ({AmountPaypalModel amount, ItemsOrderPaypalModel items}) transctionsData,
-) {
+) async {
+  final secretKeyPaypal = await PaymentBackend.getKey('secretKeyPaypal');
+  final clientIdPaypal = await PaymentBackend.getKey('clientIdPaypal');
   log('paypal');
   Navigator.of(context).push(
     MaterialPageRoute(
       builder: (BuildContext context) => PaypalCheckoutView(
         sandboxMode: true,
-        clientId: ApiKeys.clientIdPaypal,
-        secretKey: ApiKeys.secretKeyPaypal,
+        clientId: clientIdPaypal,
+        secretKey: secretKeyPaypal,
         transactions: [
           {
             "amount": transctionsData.amount.toJson(),
@@ -29,7 +31,10 @@ void paymentPaypal(
         onSuccess: (Map params) async {
           Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) => ThankYouView()),
+            MaterialPageRoute(
+              builder: (context) =>
+                  ThankYouView(amount: transctionsData.amount.total ?? '0'),
+            ),
             (route) {
               if (route.settings.name == '/') {
                 return true;

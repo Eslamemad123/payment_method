@@ -7,14 +7,14 @@ final List<CartItemModel> cartItems = [
     price: 249.0,
     imageUrl: AppAssets.headPhone,
     quantity: 2,
-    productId: '2',
+    productId: '1',
   ),
   CartItemModel(
     name: 'Nova Mechanical Keyboard',
     price: 139.0,
     imageUrl: AppAssets.keyboard,
     quantity: 1,
-    productId: '1',
+    productId: '2',
   ),
   CartItemModel(
     name: 'Aura Smartwatch Pro',

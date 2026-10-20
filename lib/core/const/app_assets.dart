@@ -71,10 +71,11 @@ class AppAssets {
 
   // ================== JSON ANIMATIONS ==================
 
-  static const String successJSON = 'assets/json/success.json';
+  static const String successJSON = 'assets/new image/success.json';
 
   static const String errorJSON = 'assets/json/error.json';
 
-  static const String loadingJSON = 'assets/json/loading.json';
+  static const String loadingJSON =
+      'assets/new image/Loading Dots In Yellow.json';
   static const String EmptyCartJSON = 'assets/new image/Empty_cart.json';
 }

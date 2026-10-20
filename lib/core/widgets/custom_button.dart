@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:payment_method/core/utils/styles.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
@@ -22,15 +20,32 @@ class CustomButton extends StatelessWidget {
         width: double.infinity,
         height: 60,
         decoration: ShapeDecoration(
-          color: const Color(0xFF34A853),
+          color: const Color(0xFF3730a3),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
           ),
         ),
         child: Center(
           child: isLoading
-              ? CircularProgressIndicator()
-              : Text(text, textAlign: TextAlign.center, style: Styles.style22),
+              ? const SizedBox(
+                  width: 24,
+                  height: 24,
+                  child: CircularProgressIndicator(
+                    color: Colors.white,
+                    strokeWidth: 2.5,
+                  ),
+                )
+              : Text(
+                  text,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 22,
+                    fontFamily: 'Inter',
+                    fontWeight: FontWeight.w500,
+                    height: 0,
+                  ),
+                ),
         ),
       ),
     );

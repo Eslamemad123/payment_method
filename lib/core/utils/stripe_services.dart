@@ -4,8 +4,8 @@ import 'package:payment_method/Features/checkout/data/models/ephemeral_key_model
 import 'package:payment_method/Features/checkout/data/models/init_payment_sheet_input_model.dart';
 import 'package:payment_method/Features/checkout/data/models/payment_input_model.dart';
 import 'package:payment_method/Features/checkout/data/models/payment_intent_model/payment_method_intent.dart';
-import 'package:payment_method/core/utils/api_keys.dart';
 import 'package:payment_method/core/utils/api_services.dart';
+import 'package:payment_method/core/utils/getKeyFromoSubabaise.dart';
 
 class StripeService {
   final ApiServices apiService = ApiServices();
@@ -13,11 +13,12 @@ class StripeService {
   Future<PaymentMethodIntent> createPaymentIntent(
     PaymentIntentInputModel paymentIntentInputModel,
   ) async {
+    final secretKeyStripe = await PaymentBackend.getKey('secretKeyStripe');
     var response = await apiService.post(
       contanType: Headers.formUrlEncodedContentType,
       body: paymentIntentInputModel.toJson(),
       url: 'https://api.stripe.com/v1/payment_intents',
-      token: ApiKeys.secretKeyStripe,
+      token: secretKeyStripe,
     );
     var paymentIntent = PaymentMethodIntent.fromJson(response.data);
     return paymentIntent;
@@ -62,13 +63,14 @@ class StripeService {
   Future<EphemeralKeyModel> createEphemeralKey({
     required String idCustomer,
   }) async {
+    final secretKeyStripe = await PaymentBackend.getKey('secretKeyStripe');
     var response = await apiService.post(
       contanType: Headers.formUrlEncodedContentType,
       body: {'customer': idCustomer},
       url: 'https://api.stripe.com/v1/ephemeral_keys',
-      token: ApiKeys.secretKeyStripe,
+      token: secretKeyStripe,
       headers: {
-        'Authorization': "Bearer ${ApiKeys.secretKeyStripe}",
+        'Authorization': "Bearer ${secretKeyStripe}",
         'Stripe-Version': '2026-08-26.dahlia',
       },
     );

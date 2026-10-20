@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:payment_method/Features/checkout/data/models/cart_item_model.dart';
-import 'package:payment_method/Features/checkout/presentation/views/cart_screen/cubit/cart_cubit.dart';
-import 'package:payment_method/Features/checkout/presentation/views/cart_screen/cubit/cart_state.dart';
+import 'package:payment_method/Features/checkout/presentation/cart_screen/cubit/cart_cubit.dart';
+import 'package:payment_method/Features/checkout/presentation/cart_screen/cubit/cart_state.dart';
 import 'package:payment_method/Features/checkout/presentation/views/productDetails/widget/QuantityAndPayment/add_sub_items_count.dart';
 
 class CartQuantityControl extends StatelessWidget {

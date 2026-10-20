@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:payment_method/Features/checkout/data/models/payment_input_model.dart';
-import 'package:payment_method/Features/checkout/presentation/manger/cubit/stripe_payment_cubit.dart';
+import 'package:payment_method/Features/checkout/presentation/views/manger/cubit/stripe_payment_cubit.dart';
 
 void paymentStripe(BuildContext context, int amount) {
   log('stripe');

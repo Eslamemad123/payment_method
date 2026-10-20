@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
-import 'package:payment_method/Features/checkout/presentation/views/cart_screen/cubit/cart_cubit.dart';
-import 'package:payment_method/Features/checkout/presentation/views/cart_screen/cubit/cart_state.dart';
-import 'package:payment_method/Features/checkout/presentation/views/cart_screen/widget/body/cart_empty_state.dart';
-import 'package:payment_method/Features/checkout/presentation/views/cart_screen/widget/cart_items.dart';
+import 'package:payment_method/Features/checkout/presentation/cart_screen/cubit/cart_cubit.dart';
+import 'package:payment_method/Features/checkout/presentation/cart_screen/cubit/cart_state.dart';
+import 'package:payment_method/Features/checkout/presentation/cart_screen/widget/body/cart_empty_state.dart';
+import 'package:payment_method/Features/checkout/presentation/cart_screen/widget/cart_items.dart';
 import 'package:payment_method/Features/checkout/presentation/views/productDetails/widget/product_details_view_body.dart';
 import 'package:payment_method/Features/checkout/presentation/views/product_screen/widget/tabletWidget/grid_view_tablet.dart';
 import 'package:payment_method/Features/checkout/presentation/views/product_screen/widget/header/header_mobaile_screen.dart';

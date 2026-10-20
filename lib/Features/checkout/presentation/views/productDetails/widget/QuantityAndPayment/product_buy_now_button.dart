@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:payment_method/Features/checkout/data/models/cart_item_model.dart';
 import 'package:payment_method/Features/checkout/data/repo/repo_implementation.dart';
-import 'package:payment_method/Features/checkout/presentation/manger/cubit/stripe_payment_cubit.dart';
-import 'package:payment_method/Features/checkout/presentation/views/cart_screen/cubit/cart_cubit.dart';
-import 'package:payment_method/Features/checkout/presentation/views/cart_screen/cubit/cart_state.dart';
-import 'package:payment_method/Features/checkout/presentation/views/widgets/payment_methods_bottom_sheet.dart';
+import 'package:payment_method/Features/checkout/presentation/cart_screen/cubit/cart_cubit.dart';
+import 'package:payment_method/Features/checkout/presentation/cart_screen/cubit/cart_state.dart';
+import 'package:payment_method/Features/checkout/presentation/views/manger/cubit/stripe_payment_cubit.dart';
+import 'package:payment_method/Features/checkout/presentation/views/paymentSheet/payment_methods_bottom_sheet.dart';
 
 class ProductBuyNowButton extends StatelessWidget {
   final int? subtotal;

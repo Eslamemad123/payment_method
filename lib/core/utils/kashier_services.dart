@@ -4,8 +4,8 @@ import 'dart:developer';
 import 'package:kashier_flutter_sdk/kashier_flutter_sdk.dart';
 import 'package:payment_method/Features/checkout/data/models/payment_intent_kashier_model/payment_intent_kashier_model.dart';
 import 'package:payment_method/Features/checkout/data/models/response_payment_kashier_model/response_payment_kashier_model.dart';
-import 'package:payment_method/core/utils/api_keys.dart';
 import 'package:payment_method/core/utils/api_services.dart';
+import 'package:payment_method/core/utils/getKeyFromoSubabaise.dart';
 
 class KashierServices {
   Future<void> initKashier() async {
@@ -15,16 +15,19 @@ class KashierServices {
   Future<ResponsePaymentKashierModel> startSettionPaymentKashier(
     PaymentIntentKashierModel paymentIntentKashierModel,
   ) async {
+    log('kashier');
     final ApiServices apiService = ApiServices();
+    final secretKeyKashier = await PaymentBackend.getKey('secretKeyKashier');
+    final ApiKeyKashier = await PaymentBackend.getKey('ApiKeyKashier');
     var response = await apiService.post(
       headers: {
-        'Authorization': ApiKeys.secretKeyKashier,
-        'api-key': ApiKeys.ApiKeyKashier,
+        'Authorization': secretKeyKashier,
+        'api-key': ApiKeyKashier,
         'Content-Type': 'application/json',
       },
       body: paymentIntentKashierModel.toJson(),
       url: 'https://test-api.kashier.io/v3/payment/sessions',
-      token: ApiKeys.secretKeyKashier,
+      token: secretKeyKashier,
     );
     dynamic sessionIdUrl = ResponsePaymentKashierModel.fromJson(response.data);
     return sessionIdUrl;

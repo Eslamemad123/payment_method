@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:payment_method/Features/checkout/presentation/views/cart_screen/view/shopping_cart_view.dart';
+import 'package:payment_method/Features/checkout/presentation/cart_screen/view/shopping_cart_view.dart';
 
 class CartNumbetItemHeader extends StatelessWidget {
   final int numberItem;
